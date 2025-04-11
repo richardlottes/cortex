@@ -11,6 +11,18 @@ from utils.functionals import FAISSFunctional, SQLiteFunctional
 def get_index(filename:str, dim: int=384) -> FAISSFunctional:
     """
     Returns existing vector index or creates and loads it
+<<<<<<< HEAD
+=======
+
+    Parameters:
+    ----------
+    - filename (str):
+    - dim(int):
+
+    Returns:
+    -------
+    - Instantiated FAISSFunctional object
+>>>>>>> 6db123e (additions)
     """
 
     #Load indexes from session state (must be reloaded everytime - it doesn't update dynamically like a SQLite DB connection)
@@ -32,9 +44,23 @@ def get_index(filename:str, dim: int=384) -> FAISSFunctional:
     return idxs[filename]
 
 
+<<<<<<< HEAD
 def get_db(filename:str, schemas: List[str]=None) -> SQLiteFunctional:
     """
     Returns existing DB or creates and loads it
+=======
+def get_db(filename: str, schemas: List[str]=None) -> SQLiteFunctional:
+    """
+    Returns existing DB or creates and loads it
+
+    Parameters:
+    ----------
+    - 
+
+    Returns:
+    -------
+    - 
+>>>>>>> 6db123e (additions)
     """
 
     #Load DBs from session state
@@ -51,9 +77,23 @@ def get_db(filename:str, schemas: List[str]=None) -> SQLiteFunctional:
     return dbs[filename]
 
 
+<<<<<<< HEAD
 def display_pdf(file_path):
     """
     Displays PDF Documents
+=======
+def display_pdf(file_path: str):
+    """
+    Displays PDF Documents
+
+    Parameters:
+    ----------
+    - 
+
+    Returns:
+    -------
+    - 
+>>>>>>> 6db123e (additions)
     """
 
     with open(file_path, "rb") as f:
@@ -63,12 +103,41 @@ def display_pdf(file_path):
 
 
 def st_success_reset(reset_key: str):
+<<<<<<< HEAD
+=======
+    """
+
+    Parameters:
+    ----------
+    - 
+
+    Returns:
+    -------
+    -     
+    """
+
+>>>>>>> 6db123e (additions)
     st.success("Upload saved to storage!")
     st.session_state[reset_key] = True
     st.rerun()
 
 
+<<<<<<< HEAD
 def st_failure_reset(e, reset_key: str):
+=======
+def st_failure_reset(e: Exception, reset_key: str):
+    """
+
+    Parameters:
+    ----------
+    - 
+
+    Returns:
+    -------
+    - 
+    """
+
+>>>>>>> 6db123e (additions)
     st.error(f"Upload failed: {e}")
     st.session_state[reset_key] = True
     sleep(5)

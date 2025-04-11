@@ -2,15 +2,8 @@ import uuid
 import streamlit as st
 
 from utils.processing import (
-    # add_chunks,
-    # chunk_text,
     delete_document,
-    # mistral_pdf_ocr,
-    # create_title,
-    # repunctuate,
     reset_storage,
-    # retrieve_youtube_title,
-    # retrieve_youtube_transcript,
     DocumentManager
 )
 from utils.streamlit_helpers import get_db, get_index, display_pdf, st_success_reset, st_failure_reset
@@ -54,11 +47,10 @@ faiss_index = get_index(vector_index_name, dim)
 #Initialize document manager to process different types of docs
 document_manager = DocumentManager(faiss_index, sqlite_db, embed_model)
 
-#Upload and text-converted PDF 
+#Upload and PDF or TXT
 uploaded_file = st.file_uploader("Save a file to Storage", type=["pdf", "txt"], key=doc_upload_key)
 if uploaded_file is not None:
     try:
-        #Write file to disk as bytes for later reading
         if uploaded_file.name.lower().endswith(".pdf"):
             with st.spinner("Processing PDF. This may take a minute...", show_time=True):
                 document_manager.process_pdf(uploaded_file)
