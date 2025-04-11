@@ -23,17 +23,11 @@ from utils.config import mistral_client, chunker, openai_client
 def mistral_pdf_ocr(filename: str) -> str:
     """
     
-<<<<<<< HEAD
-    PARAMS:
-
-    RETURNS:
-=======
     Parameters:
     ----------
 
     Returns:
     -------
->>>>>>> 6db123e (additions)
     """
     uploaded_pdf = mistral_client.files.upload(
         file = {
@@ -63,12 +57,6 @@ def parse_youtube_id(youtube_url: str) -> str:
     """
     Extracts a video ID from a YouTube URL. Supports both youtu.be and youtube.com/watch?v= formats.
 
-<<<<<<< HEAD
-    PARAMS:
-        - youtube_url: A URL from a YouTube video
-    RETURNS:
-        - The extracted video ID from the URL
-=======
     Parameters:
     ----------
     - youtube_url: A URL from a YouTube video
@@ -76,7 +64,6 @@ def parse_youtube_id(youtube_url: str) -> str:
     Returns:
     -------
     - The extracted video ID from the URL
->>>>>>> 6db123e (additions)
     """
     patterns = [
         r"youtu\.be/([a-zA-Z0-9_-]{11})",             # short youtu.be/<id>
@@ -93,12 +80,6 @@ def retrieve_youtube_transcript(youtube_url: str) -> str:
     """
     Retrieves the transcript from a YouTube Video
 
-<<<<<<< HEAD
-    PARAMS:
-        - youtube_url: A URL from a YouTube video
-    RETURNS:
-        - The transcript of the youtube video
-=======
     Parameters:
     ----------
     - youtube_url: A URL from a YouTube video
@@ -106,7 +87,6 @@ def retrieve_youtube_transcript(youtube_url: str) -> str:
     Returns:
     -------
     - The transcript of the youtube video
->>>>>>> 6db123e (additions)
     """
 
     transcript = ""
@@ -126,12 +106,6 @@ def retrieve_youtube_transcript(youtube_url: str) -> str:
 def retrieve_youtube_title(url: str) -> str:
     """
     
-<<<<<<< HEAD
-    PARAMS:
-        - url
-    RETURNS:
-        - 
-=======
     Parameters:
     ----------
     - url
@@ -139,7 +113,6 @@ def retrieve_youtube_title(url: str) -> str:
     Returns:
     -------
     - 
->>>>>>> 6db123e (additions)
     """
     ydl_opts = {
         "quiet": True,            # suppress output
@@ -159,8 +132,6 @@ def retrieve_youtube_title(url: str) -> str:
 def create_title(text:str) -> list:
     '''
 
-<<<<<<< HEAD
-=======
     Parameters:
     ----------
     - 
@@ -168,7 +139,6 @@ def create_title(text:str) -> list:
     Returns:
     -------
     - 
->>>>>>> 6db123e (additions)
     '''
 
     #Call OpenAI API to repunctuate unpunctuated YouTube transcript
@@ -238,9 +208,6 @@ def repunctuate(text:str, fixed_chunk: bool=False, token_lim: int=5000, char_per
 
 def chunk_text(text: str, chunker: SentenceSplitter=chunker):
     """
-<<<<<<< HEAD
-    
-=======
 
     Parameters:
     ----------
@@ -249,7 +216,6 @@ def chunk_text(text: str, chunker: SentenceSplitter=chunker):
     Returns:
     -------
     - 
->>>>>>> 6db123e (additions)
     """
 
     document = Document(text=text)
@@ -261,9 +227,6 @@ def chunk_text(text: str, chunker: SentenceSplitter=chunker):
 
 def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chunker):
     """
-<<<<<<< HEAD
-    
-=======
 
     Parameters:
     ----------
@@ -272,7 +235,6 @@ def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chu
     Returns:
     -------
     -  
->>>>>>> 6db123e (additions)
     """
 
     documents = SimpleDirectoryReader(input_files=files).load_data()
@@ -287,9 +249,6 @@ def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chu
 ###########################
 def reset_storage(db_name: str, schemas: list, faiss_name: str, faiss_index: FAISSFunctional):
     """
-<<<<<<< HEAD
-    
-=======
 
     Parameters:
     ----------
@@ -298,7 +257,6 @@ def reset_storage(db_name: str, schemas: list, faiss_name: str, faiss_index: FAI
     Returns:
     -------
     -     
->>>>>>> 6db123e (additions)
     """
 
     #Reset sqlite DB
@@ -311,8 +269,6 @@ def reset_storage(db_name: str, schemas: list, faiss_name: str, faiss_index: FAI
     
 
 def add_chunks(faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional, embeddings: np.array, chunked_text: str, doc_uuid: str):
-<<<<<<< HEAD
-=======
     """
 
     Parameters:
@@ -323,7 +279,6 @@ def add_chunks(faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional, embedd
     -------
     -     
     """
->>>>>>> 6db123e (additions)
 
     #Add embeddings to FAISS index
     uuids, faiss_ids = faiss_index.add_embs(embeddings, return_ids=True, autosave=True)
@@ -339,9 +294,6 @@ def add_chunks(faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional, embedd
 
 
 def delete_document(document_uuid: str, faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional):
-<<<<<<< HEAD
-    # vector_ids = list()
-=======
     """
 
     Parameters:
@@ -353,7 +305,6 @@ def delete_document(document_uuid: str, faiss_index: FAISSFunctional, sqlite_db:
     -     
     """
 
->>>>>>> 6db123e (additions)
     vector_ids = sqlite_db.execute_query(
                                         """SELECT vector_id
                                             FROM chunks 
@@ -398,9 +349,6 @@ class DocumentManager:
         
     def process_pdf(self, file_upload):
         """
-<<<<<<< HEAD
-        
-=======
 
         Parameters:
         ----------
@@ -409,7 +357,6 @@ class DocumentManager:
         Returns:
         -------
         -         
->>>>>>> 6db123e (additions)
         """
 
         file_bytes = file_upload.read()
@@ -424,8 +371,6 @@ class DocumentManager:
     def process_txt(self, file_upload):
         """
         
-<<<<<<< HEAD
-=======
         Parameters:
         ----------
         - 
@@ -433,7 +378,6 @@ class DocumentManager:
         Returns:
         -------
         - 
->>>>>>> 6db123e (additions)
         """
 
         file_bytes = file_upload.read()
@@ -443,9 +387,6 @@ class DocumentManager:
 
     def process_youtube(self, url: str):
         """
-<<<<<<< HEAD
-        
-=======
 
         Parameters:
         ----------
@@ -454,7 +395,6 @@ class DocumentManager:
         Returns:
         -------
         -         
->>>>>>> 6db123e (additions)
         """
 
         title = retrieve_youtube_title(url)
@@ -465,9 +405,6 @@ class DocumentManager:
 
     def process_text(self, text: str):
         """
-<<<<<<< HEAD
-        
-=======
     
         Parameters:
         ----------
@@ -476,7 +413,6 @@ class DocumentManager:
         Returns:
         -------
         - 
->>>>>>> 6db123e (additions)
         """
 
         title = create_title(text)
