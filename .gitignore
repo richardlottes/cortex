@@ -1,0 +1,11 @@
+#Folders
+/venv
+/__pychache__
+.ipynb_checkpoints/
+
+#Files
+.env
+.DS_Store
+*.faiss
+*.db
+test.ipynb
