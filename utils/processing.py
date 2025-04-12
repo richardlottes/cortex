@@ -397,9 +397,10 @@ class DocumentManager:
         -         
         """
 
-        title = retrieve_youtube_title(url)
+        # title = retrieve_youtube_title(url) #Requires cookies to be passed; won't work in Cloud Run deployed server env
         raw_transcript = retrieve_youtube_transcript(url)
         text = repunctuate(raw_transcript)
+        title = create_title(text)
         self._process_document(title, text, "youtube", url)
 
 
