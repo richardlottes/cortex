@@ -1,9 +1,10 @@
-from sentence_transformers import SentenceTransformer
-from mistralai import Mistral
-from openai import OpenAI
+import os
+
 from dotenv import load_dotenv
 from llama_index.core.node_parser import SentenceSplitter
-import os
+from mistralai import Mistral
+from openai import OpenAI
+from sentence_transformers import SentenceTransformer
 
 
 if os.getenv("GOOGLE_CLOUD_PROJECT") is None:
