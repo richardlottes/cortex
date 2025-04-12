@@ -1,7 +1,7 @@
 import os
 import uuid
 import sqlite3
-from typing import Optional, Tuple, List
+from typing import Optional, Tuple, List, Any
 
 import numpy as np
 import faiss
@@ -18,16 +18,17 @@ class FAISSFunctional:
         self.filename: Optional[str] = filename if filename else None
 
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+
         return f"<FAISSFunctional ntotal={len(self)}, dim={self.dim}, file='{self.filename}'>"
 
 
-    def __len__(self):
+    def __len__(self) -> int:
 
         return self.index.ntotal
 
 
-    def __add__(self, other: "FAISSFunctional"):
+    def __add__(self, other: "FAISSFunctional") -> "FAISSFunctional":
 
         if not isinstance(other, FAISSFunctional):
             raise ValueError("Can only merge with another FAISSFunctional object.")
@@ -42,7 +43,7 @@ class FAISSFunctional:
         return merged
         
 
-    def __radd__(self, other):
+    def __radd__(self, other) -> "FAISSFunctional":
 
         return other.__add__(self)
 
@@ -50,15 +51,15 @@ class FAISSFunctional:
     @property
     def has_file(self) -> bool:
         """
-        
+        Whether the object has a filename or not.
         """
         return self.filename is not None and os.path.exists(self.filename)
 
     
     @property
-    def id_to_emb(self):
+    def id_to_emb(self) -> dict:
         """
-        
+        Custom ID to embedding map.
         """
 
         #Retrieve IDs
@@ -72,7 +73,7 @@ class FAISSFunctional:
 
     def _autosave(self):
         """
-        
+        Internal function to automatically save the FAISS Index under its filename.
         """
 
         if not self.filename:
@@ -86,11 +87,11 @@ class FAISSFunctional:
 
     def save(self, filename: str):
         """
-        Save the FAISS index to disk
+        Save the FAISS index to disk.
 
         Parameters:
         ----------
-        - filename (str): The filename that the the index will be stored on disk under
+        - filename (str): The filename that the the index will be stored on disk under.
         """
 
         faiss.write_index(self.index, filename)
@@ -99,11 +100,11 @@ class FAISSFunctional:
 
     def load(self, filename: str):
         """
-        Load a saved FAISS index into FAISSFuncitonal object
+        Load a saved FAISS index into FAISSFuncitonal object.
 
         Parameters:
         ----------
-        - filename (str): The filename of the index stored on disk to be loaded into the FAISSFunctional object
+        - filename (str): The filename of the index stored on disk to be loaded into the FAISSFunctional object.
         """
 
         loaded_index = faiss.read_index(filename)
@@ -114,16 +115,17 @@ class FAISSFunctional:
 
     def add_embs(self, embeddings: np.ndarray, return_ids: bool=False, autosave: bool=False) -> Optional[Tuple[List[str], List[int]]]:
         """
-        Adds embeddings to the FAISS index
+        Adds embeddings to the FAISS index.
 
         Parameters:
         ----------
-        - embeddings (np.ndarray): The embeddings to be added to the index
+        - embeddings (np.ndarray): The embeddings to be added to the index.
 
         Returns:
         -------
-        - uuid_strs (List[str]): List of unique UUID values
-        - faiss_ids (List[int]): List of unique FAISS-compatible ID values
+        - uuid_strs (List[str]): List of unique UUID values.
+        - faiss_ids (List[int]): List of unique FAISS-compatible ID values.
+        - autosave (bool): A flag to automatically save the index.
         """
         
         if embeddings.ndim == 1:
@@ -144,7 +146,12 @@ class FAISSFunctional:
 
     def del_embs(self, ids: np.ndarray, autosave: bool=False):
         """
-        Deletes embeddings from the FAISS index
+        Deletes embeddings from the FAISS index.
+
+        Parameters:
+        ----------
+        - ids (np.ndarray): The embeddings to be added to the index.
+        - autosave (bool): A flag to automatically save the index.
         """
 
         if isinstance(ids, int):
@@ -164,12 +171,14 @@ class FAISSFunctional:
 
     def reset_index(self, embedding_dim: int=384, embeddings: np.ndarray=None, filename: str= None, autosave: bool=False):
         """
-        Reset the index and FAISSFunctional object
+        Reset the index and FAISSFunctional object.
 
         Parameters:
         ----------
-        - embedding_dim (int):
-        - embeddings (np.ndarray):
+        - embedding_dim (int): The dimensionality of the embeddings the FAISS Index will store.
+        - embeddings (np.ndarray): The embeddings themselves. If provided, the dimensionality of the embeddings the FAISS Index will store will be implicitly assumed using them.
+        - filename (str): The filename under which the index will be saved.
+        - autosave (bool): A flag to automatically save the index.
         """
         
         if self.has_file:
@@ -185,17 +194,17 @@ class FAISSFunctional:
 
     def query(self, query_embedding: np.ndarray, k: int=1) -> Tuple[np.ndarray, np.ndarray]:
         """
-        Cosine similarity query (not native to FAISS) that returns k corresponding distances and IDs
+        Cosine similarity query (not native to FAISS) that returns k corresponding distances and IDs.
 
         Parameters:
         ----------
-        - query_embedding (np.ndarray): The embedding of the query
-        - k (int): The number of similar vectors to be retrieve
+        - query_embedding (np.ndarray): The embedding of the query.
+        - k (int): The number of similar vectors to be retrieve.
         
         Returns:
         -------
-        - D (np.ndarray): The distances of each returned embedding from the query embedding
-        - I (np.ndarray): The IDs of the embeddings returned
+        - D (np.ndarray): The distances of each returned embedding from the query embedding.
+        - I (np.ndarray): The IDs of the embeddings returned.
         """
 
         #Clone the query embedding to avoid modifying the original
@@ -216,14 +225,14 @@ class FAISSFunctional:
         
         Parameters:
         ----------
-        - query_embedding (np.ndarray): The embedding of the query
-        - n_threads (int): The number of threads you want to limit FAISS to use during the query
-        - k (int): The number of similar vectors to be retrieve
+        - query_embedding (np.ndarray): The embedding of the query.
+        - n_threads (int): The number of threads you want to limit FAISS to use during the query.
+        - k (int): The number of similar vectors to be retrieve.
         
         Returns:
         -------
-        - D (np.ndarray): The distances of each returned embedding from the query embedding
-        - I (np.ndarray): The IDs of the embeddings returned
+        - D (np.ndarray): The distances of each returned embedding from the query embedding.
+        - I (np.ndarray): The IDs of the embeddings returned.
         """
         
         #Set thread limit for FAISS to avoid excessive multiprocessing
@@ -248,9 +257,9 @@ class FAISSFunctional:
 
 class SQLiteFunctional:
     """
-    
+    Lightweight wrapper around SQLite3 to increase ease of use.
     """
-    def __init__(self, filename: str, schemas: Optional[list]=None):
+    def __init__(self, filename: str, schemas: Optional[List[str]]=None):
         self.filename = filename
         self.schemas = schemas
 
@@ -263,6 +272,9 @@ class SQLiteFunctional:
 
 
     def _init_db(self):
+        """
+        
+        """
         #Connects to db unless one doesn't exist in which case one is created
         with sqlite3.connect(self.filename) as conn:
             #Create cursor object to execute SQL with
@@ -277,7 +289,7 @@ class SQLiteFunctional:
             conn.commit()
 
 
-    def execute_cmd(self, command: str, objects: Tuple[any]):
+    def execute_cmd(self, command: str, objects: Tuple[Any, ...]):
         """
         
         """
@@ -287,7 +299,7 @@ class SQLiteFunctional:
             cur.execute(command, objects)
 
 
-    def execute_query(self, command: str, objects: Tuple[any]=()):
+    def execute_query(self, command: str, objects: Tuple[any]=()) -> List[Tuple[Any, ...]]:
         """
         
         """

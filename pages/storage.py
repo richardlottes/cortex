@@ -63,23 +63,23 @@ if uploaded_file is not None:
         st_failure_reset(e, "reset_doc")
 
 #Requires cookies to be passed; won't work in Cloud Run deployed server env - would need to build out separate backend service with centralized YouTube creds or allow user to submit theirs to pass
-if os.getenv("GOOGLE_CLOUD_PROJECT") is None:
-    #Transcribe YouTube video to text
-    with st.form("youtube_form"):
-        text_input_raw =  st.text_input(
-                "Save YouTube Video to Storage",
-                key=yt_key,
-            )
-        yt_submitted = st.form_submit_button("Save Video")
-        url = text_input_raw if text_input_raw.strip() != "" else None
+# if os.getenv("GOOGLE_CLOUD_PROJECT") is None:
+#Transcribe YouTube video to text
+with st.form("youtube_form"):
+    text_input_raw =  st.text_input(
+            "Save YouTube Video to Storage",
+            key=yt_key,
+        )
+    yt_submitted = st.form_submit_button("Save Video")
+    url = text_input_raw if text_input_raw.strip() != "" else None
 
-        if yt_submitted and url is not None:
-            try:
-                with st.spinner("Transcribing YouTube video. This may take a minute...", show_time=True):
-                    document_manager.process_youtube(url)
-                st_success_reset("reset_yt")
-            except Exception as e:
-                st_failure_reset(e, "reset_yt")
+    if yt_submitted and url is not None:
+        try:
+            with st.spinner("Transcribing YouTube video. This may take a minute...", show_time=True):
+                document_manager.process_youtube(url)
+            st_success_reset("reset_yt")
+        except Exception as e:
+            st_failure_reset(e, "reset_yt")
 
 #Process raw text
 with st.form("text_form"):

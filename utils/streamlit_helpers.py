@@ -15,11 +15,11 @@ def get_index(filename:str, dim: int=384) -> FAISSFunctional:
     Parameters:
     ----------
     - filename (str):
-    - dim(int): The dimensionality 
+    - dim (int): 
 
     Returns:
     -------
-    - Instantiated FAISSFunctional object
+    - Instantiated FAISSFunctional object.
     """
 
     #Load indexes from session state (must be reloaded everytime - it doesn't update dynamically like a SQLite DB connection)
@@ -43,11 +43,12 @@ def get_index(filename:str, dim: int=384) -> FAISSFunctional:
 
 def get_db(filename: str, schemas: List[str]=None) -> SQLiteFunctional:
     """
-    Returns existing DB or creates and loads it
+    Returns existing DB or creates and loads it.
 
     Parameters:
     ----------
-    - 
+    - filename (str):
+    - schemas (List(str))
 
     Returns:
     -------
@@ -70,15 +71,11 @@ def get_db(filename: str, schemas: List[str]=None) -> SQLiteFunctional:
 
 def display_pdf(file_path: str):
     """
-    Displays PDF Documents
+    Displays PDF Documents.
 
     Parameters:
     ----------
-    - 
-
-    Returns:
-    -------
-    - 
+    - file_path (str):
     """
 
     with open(file_path, "rb") as f:
@@ -89,14 +86,11 @@ def display_pdf(file_path: str):
 
 def st_success_reset(reset_key: str):
     """
+    Displays success message and reruns page.
 
     Parameters:
     ----------
-    - 
-
-    Returns:
-    -------
-    -     
+    - reset_key (str): 
     """
 
     st.success("Upload saved to storage!")
@@ -106,14 +100,12 @@ def st_success_reset(reset_key: str):
 
 def st_failure_reset(e: Exception, reset_key: str):
     """
+    Displays error message and reruns page.
 
     Parameters:
     ----------
-    - 
-
-    Returns:
-    -------
-    - 
+    - e (Exception):
+    - reset_key (str):
     """
 
     st.error(f"Upload failed: {e}")

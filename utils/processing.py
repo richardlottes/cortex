@@ -25,9 +25,11 @@ def mistral_pdf_ocr(filename: str) -> str:
     
     Parameters:
     ----------
+    - filename (str):
 
     Returns:
     -------
+    - 
     """
     uploaded_pdf = mistral_client.files.upload(
         file = {
@@ -59,7 +61,7 @@ def parse_youtube_id(youtube_url: str) -> str:
 
     Parameters:
     ----------
-    - youtube_url: A URL from a YouTube video
+    - youtube_url (str): A URL from a YouTube video
 
     Returns:
     -------
@@ -82,7 +84,7 @@ def retrieve_youtube_transcript(youtube_url: str) -> str:
 
     Parameters:
     ----------
-    - youtube_url: A URL from a YouTube video
+    - youtube_url (str): A URL from a YouTube video
 
     Returns:
     -------
@@ -108,11 +110,11 @@ def retrieve_youtube_title(url: str) -> str:
     
     Parameters:
     ----------
-    - url
+    - url (str):
 
     Returns:
     -------
-    - 
+    - The YouTube video's title.
     """
     ydl_opts = {
         "quiet": True,            # suppress output
@@ -129,16 +131,16 @@ def retrieve_youtube_title(url: str) -> str:
 ###########################
 ###RAW TEXT###
 ###########################
-def create_title(text:str) -> list:
+def create_title(text: str) -> list:
     '''
 
     Parameters:
     ----------
-    - 
+    - text (str):
 
     Returns:
     -------
-    - 
+    - A list of output text from OpenAI's model.
     '''
 
     #Call OpenAI API to repunctuate unpunctuated YouTube transcript
@@ -159,7 +161,7 @@ def create_title(text:str) -> list:
 ###########################
 ###ALL INPUTS - CHUNKING###
 ###########################
-def repunctuate(text:str, fixed_chunk: bool=False, token_lim: int=5000, char_per_tok: int=4) -> list:
+def repunctuate(text: str, fixed_chunk: bool=False, token_lim: int=5000, char_per_tok: int=4) -> list:
     '''
     Youtube transcriptions are returned with no punctuation. To effectively chunk them, we need to repunctuate. 
 
@@ -206,16 +208,17 @@ def repunctuate(text:str, fixed_chunk: bool=False, token_lim: int=5000, char_per
     return "".join(out)
 
 
-def chunk_text(text: str, chunker: SentenceSplitter=chunker):
+def chunk_text(text: str, chunker: SentenceSplitter=chunker) -> str:
     """
 
     Parameters:
     ----------
-    - 
+    - text (str):
+    - chunker (SentenceSplitter):
 
     Returns:
     -------
-    - 
+    - A list of chunked text.
     """
 
     document = Document(text=text)
@@ -225,16 +228,17 @@ def chunk_text(text: str, chunker: SentenceSplitter=chunker):
     return text
 
 
-def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chunker):
+def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chunker) -> List[str]:
     """
 
     Parameters:
     ----------
-    - 
+    - files (List[str]):
+    - chunker (SentenceSplitter):
 
     Returns:
     -------
-    -  
+    - A list of chunked text.
     """
 
     documents = SimpleDirectoryReader(input_files=files).load_data()
@@ -249,14 +253,14 @@ def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chu
 ###########################
 def reset_storage(db_name: str, schemas: list, faiss_name: str, faiss_index: FAISSFunctional):
     """
+    Resets all storage.
 
     Parameters:
     ----------
-    - 
-
-    Returns:
-    -------
-    -     
+    - db_name (str):
+    - schemas (list):
+    - faiss_name (str):
+    - ffaiss_index (FAISSFunctional):
     """
 
     #Reset sqlite DB
@@ -270,14 +274,15 @@ def reset_storage(db_name: str, schemas: list, faiss_name: str, faiss_index: FAI
 
 def add_chunks(faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional, embeddings: np.array, chunked_text: str, doc_uuid: str):
     """
+    Adds document chunks to FAISS Index and SQLite DB.
 
     Parameters:
     ----------
-    - 
-
-    Returns:
-    -------
-    -     
+    - faiss_index (FAISSFunctional):
+    - sqlite_db (SQLiteFunctional):
+    - embeddings (np.array):
+    - chunked_text (str):
+    - doc_uuid (str):
     """
 
     #Add embeddings to FAISS index
@@ -295,14 +300,13 @@ def add_chunks(faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional, embedd
 
 def delete_document(document_uuid: str, faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional):
     """
+    Deletes single document from storage.
 
     Parameters:
     ----------
-    - 
-
-    Returns:
-    -------
-    -     
+    - document_uuid (str):
+    - faiss_index (FAISSFunctional):
+    - sqlite_db (SQLiteFunctional):
     """
 
     vector_ids = sqlite_db.execute_query(
@@ -322,7 +326,9 @@ def delete_document(document_uuid: str, faiss_index: FAISSFunctional, sqlite_db:
 ###DOCUMENT MANAGER###
 ###########################
 class DocumentManager:
-
+    """
+    Facilitates document management and processing in a modular fashion.
+    """
 
     def __init__(self, faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional, embedding_model):
         self.faiss_index = faiss_index
@@ -331,6 +337,16 @@ class DocumentManager:
 
 
     def _process_document(self, name: str, text: str, doc_type: str, url: Optional[str]=None):
+        """
+        Adds document to FAISS Index and SQLite DB.
+        
+        Parameters:
+        ----------        
+        - name (str): The name of the document.
+        - text (str): The text contained in the document.
+        - doc_type (str): The type of document (maybe should be enum).
+        - url (Optional[str]): A URL associated with the document if there is one; defaults to None.
+        """
     
         doc_uuid = str(uuid.uuid4())
         
@@ -349,14 +365,11 @@ class DocumentManager:
         
     def process_pdf(self, file_upload):
         """
+        Processes .pdf and adds it to storage.
 
         Parameters:
         ----------
-        - 
-
-        Returns:
-        -------
-        -         
+        -  file_upload: Streamlit file upload object to be processed.
         """
 
         file_bytes = file_upload.read()
@@ -370,14 +383,11 @@ class DocumentManager:
 
     def process_txt(self, file_upload):
         """
-        
+        Processes .txt file and adds it to storage.
+
         Parameters:
         ----------
-        - 
-
-        Returns:
-        -------
-        - 
+        - file_upload: Streamlit file upload object to be processed.
         """
 
         file_bytes = file_upload.read()
@@ -387,32 +397,28 @@ class DocumentManager:
 
     def process_youtube(self, url: str):
         """
+        Processes YouTube transcript and adds it to storage.
 
         Parameters:
         ----------
-        - 
-
-        Returns:
-        -------
-        -         
+        - url (str): URL of YoutTube video to be processed.
         """
 
-        title = retrieve_youtube_title(url)
+        # title = retrieve_youtube_title(url)
         raw_transcript = retrieve_youtube_transcript(url)
+        print(raw_transcript)
         text = repunctuate(raw_transcript)
+        title = create_title(text)
         self._process_document(title, text, "youtube", url)
 
 
     def process_text(self, text: str):
         """
-    
+        Processes raw text and adds it to storage.
+
         Parameters:
         ----------
-        - 
-
-        Returns:
-        -------
-        - 
+        - text (str): Raw text to be processed.
         """
 
         title = create_title(text)
