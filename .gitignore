@@ -1,6 +1,6 @@
 #Folders
-/venv
-/__pychache__
+venv/
+__pycache__/
 .ipynb_checkpoints/
 
 #Files
@@ -8,4 +8,4 @@
 .DS_Store
 *.faiss
 *.db
-test.ipynb
+playground.ipynb

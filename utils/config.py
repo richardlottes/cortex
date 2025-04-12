@@ -5,8 +5,12 @@ from dotenv import load_dotenv
 from llama_index.core.node_parser import SentenceSplitter
 import os
 
-load_dotenv()
-api_key = os.getenv("MISTRAL_API_KEY")
+
+if os.getenv("GOOGLE_CLOUD_PROJECT") is None:
+    load_dotenv()
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+mistral_api_key = os.getenv("MISTRAL_API_KEY")
 
 #SQLite DB 
 chunks_schema = """
@@ -39,7 +43,6 @@ or you are unsure, say you don't know. All text beyond this point is context:"""
 #Initialize embedding model
 embed_model = SentenceTransformer("all-MiniLM-L6-v2")
 
-
-openai_client = OpenAI()
 chunker = SentenceSplitter(chunk_size=512)
-mistral_client = Mistral(api_key=api_key)
+openai_client = OpenAI(api_key=openai_api_key)
+mistral_client = Mistral(api_key=mistral_api_key)
