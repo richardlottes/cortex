@@ -28,13 +28,13 @@ frozenlist==1.5.0
 fsspec==2025.3.2
 gitdb==4.0.12
 GitPython==3.1.44
-google-api-core==2.24.2
+google-api-core==2.14.0
 google-auth==2.38.0
-google-cloud-secret-manager==2.23.2
-googleapis-common-protos==1.69.2
+google-cloud-secret-manager==2.16.2
+googleapis-common-protos==1.59.1
 greenlet==3.1.1
 griffe==1.7.2
-grpc-google-iam-v1==0.14.2
+grpc-google-iam-v1==0.13.0
 grpcio==1.51.1
 grpcio-status==1.51.1
 h11==0.14.0
