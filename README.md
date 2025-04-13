@@ -1,4 +1,4 @@
-# 🧠 Hippocampus: A Lightweight RAG App for Document Search
+# 🧠 Cortex: A Lightweight RAG App for Document Search
 Hippocampus is a lightweight Retrieval-Augmented Generation (RAG) app built with Python and Streamlit. It allows users to upload documents (PDFs, TXT files, YouTube videos, raw text) and query them using natural language via an LLM, backed by a semantic search engine and persistent local memory.
 
 ---
