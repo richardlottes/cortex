@@ -1,4 +1,4 @@
-FROM python:3.12.4-slim
+FROM python:3.10-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -10,11 +10,9 @@ WORKDIR /app
 # Install system dependencies required for building grpcio & protobuf
 RUN apt-get update && apt-get install -y \
     build-essential \
-    python3-dev \
     libprotobuf-dev \
     libgrpc++-dev \
     pkg-config \
-    git \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
