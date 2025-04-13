@@ -8,14 +8,14 @@ import streamlit as st
 from utils.functionals import FAISSFunctional, SQLiteFunctional
 
 
-def get_index(filename:str, dim: int=384) -> FAISSFunctional:
+def get_index(filename: str, dim: int=384) -> FAISSFunctional:
     """
-    Returns existing vector index or creates and loads it
+    Returns existing vector index or creates and loads it.
 
     Parameters:
     ----------
-    - filename (str):
-    - dim (int): 
+    - filename (str): The file name of the FAISS index to be loaded.
+    - dim (int): The dimensionality of the FAISS index to be loaded.
 
     Returns:
     -------
@@ -47,17 +47,17 @@ def get_db(filename: str, schemas: List[str]=None) -> SQLiteFunctional:
 
     Parameters:
     ----------
-    - filename (str):
-    - schemas (List(str))
+    - filename (str): The file name of the SQLite DB to connect to.
+    - schemas (List(str)): The schemas to initialize; defaults to None.
 
     Returns:
     -------
-    - 
+    - Instantiated SQLiteFunctional object.
     """
 
     #Load DBs from session state
     dbs = st.session_state["sqlite_dbs"]
-    print(dbs)
+    
     #If the targeted DB doesn't exist then add it
     if filename not in dbs:
         if schemas is not None:
@@ -75,7 +75,7 @@ def display_pdf(file_path: str):
 
     Parameters:
     ----------
-    - file_path (str):
+    - file_path (str): The file path of the PDF to display.
     """
 
     with open(file_path, "rb") as f:
@@ -90,7 +90,7 @@ def st_success_reset(reset_key: str):
 
     Parameters:
     ----------
-    - reset_key (str): 
+    - reset_key (str): The key that determines to create a new key for specific types of document ingestion.
     """
 
     st.success("Upload saved to storage!")
@@ -104,8 +104,8 @@ def st_failure_reset(e: Exception, reset_key: str):
 
     Parameters:
     ----------
-    - e (Exception):
-    - reset_key (str):
+    - e (Exception): An Exception message.
+    - reset_key (str): The key that determines to create a new key for specific types of document ingestion.
     """
 
     st.error(f"Upload failed: {e}")

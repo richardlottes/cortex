@@ -273,7 +273,7 @@ class SQLiteFunctional:
 
     def _init_db(self):
         """
-        
+        Initializes a SQLite DB.
         """
         #Connects to db unless one doesn't exist in which case one is created
         with sqlite3.connect(self.filename) as conn:
@@ -291,7 +291,12 @@ class SQLiteFunctional:
 
     def execute_cmd(self, command: str, objects: Tuple[Any, ...]):
         """
-        
+        Executes an arbitrary command.
+
+        Parameters:
+        ----------
+        - command (str): The command to be executed.
+        - objects (Tuple[any]): Any objects that will be dynamically used in the command.
         """
         #Connects to db unless one doesn't exist in which case one is created
         with sqlite3.connect(self.filename) as conn:
@@ -301,7 +306,16 @@ class SQLiteFunctional:
 
     def execute_query(self, command: str, objects: Tuple[any]=()) -> List[Tuple[Any, ...]]:
         """
-        
+        Executes a query.
+
+        Parameters:
+        ----------
+        - command (str): The query to be executed.
+        - objects (Tuple[any]): Any objects that will be dynamically used in the command.
+
+        Returns:
+        -------
+        - Query results.
         """
         #Connects to db unless one doesn't exist in which case one is created
         with sqlite3.connect(self.filename) as conn:

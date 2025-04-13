@@ -22,14 +22,15 @@ from utils.config import mistral_client, chunker, openai_client
 ###########################
 def mistral_pdf_ocr(filename: str) -> str:
     """
-    
+    Parses PDF into markdown.
+
     Parameters:
     ----------
-    - filename (str):
+    - filename (str): A file name for the PDF to be parsed.
 
     Returns:
     -------
-    - 
+    - Markdown version of the supplied PDF.
     """
     uploaded_pdf = mistral_client.files.upload(
         file = {
@@ -61,11 +62,11 @@ def parse_youtube_id(youtube_url: str) -> str:
 
     Parameters:
     ----------
-    - youtube_url (str): A URL from a YouTube video
+    - youtube_url (str): A URL from a YouTube video.
 
     Returns:
     -------
-    - The extracted video ID from the URL
+    - The extracted video ID from the URL.
     """
     patterns = [
         r"youtu\.be/([a-zA-Z0-9_-]{11})",             # short youtu.be/<id>
@@ -80,15 +81,15 @@ def parse_youtube_id(youtube_url: str) -> str:
 
 def retrieve_youtube_transcript(youtube_url: str) -> str:
     """
-    Retrieves the transcript from a YouTube Video
+    Retrieves the transcript from a YouTube Video.
 
     Parameters:
     ----------
-    - youtube_url (str): A URL from a YouTube video
+    - youtube_url (str): A URL from a YouTube video.
 
     Returns:
     -------
-    - The transcript of the youtube video
+    - The transcript of the youtube video.
     """
 
     transcript = ""
@@ -107,10 +108,11 @@ def retrieve_youtube_transcript(youtube_url: str) -> str:
 
 def retrieve_youtube_title(url: str) -> str:
     """
-    
+    Retrieves a YouTube video's title.
+
     Parameters:
     ----------
-    - url (str):
+    - url (str): The YouTube video's URL.
 
     Returns:
     -------
@@ -133,10 +135,11 @@ def retrieve_youtube_title(url: str) -> str:
 ###########################
 def create_title(text: str) -> list:
     '''
+    Creates a title based on a block of text.
 
     Parameters:
     ----------
-    - text (str):
+    - text (str): The text block used to determine a title.
 
     Returns:
     -------
@@ -154,7 +157,6 @@ def create_title(text: str) -> list:
                 ]
             )
     
-
     return response.output_text
 
 
@@ -168,13 +170,13 @@ def repunctuate(text: str, fixed_chunk: bool=False, token_lim: int=5000, char_pe
     The most effective way I've found is just having a foundation model do it.
 
     PARAMS:
-        - text: The text to be repunctuated
-        - fixed_chunk: A boolean flag to determine whether you want to chunk your text depending on whether or not it is long enough
-        - token_lim: The limit of tokens per chunk
+        - text: The text to be repunctuated.
+        - fixed_chunk: A boolean flag to determine whether you want to chunk your text depending on whether or not it is long enough.
+        - token_lim: The limit of tokens per chunk.
         - char_per_tok: The approximate number of characters per token. 4 is the rough number for OpenAI models.
 
     RETURNS:
-        - A list of repunctuated text chunks
+        - A list of repunctuated text chunks.
     '''
 
     #If the text is very long and we need to chunk it in a fixed manner, we do so here
@@ -210,11 +212,12 @@ def repunctuate(text: str, fixed_chunk: bool=False, token_lim: int=5000, char_pe
 
 def chunk_text(text: str, chunker: SentenceSplitter=chunker) -> str:
     """
+    Chunks raw text using the provided SentenceSplitter.
 
     Parameters:
     ----------
-    - text (str):
-    - chunker (SentenceSplitter):
+    - text (str): The text to be chunked.
+    - chunker (SentenceSplitter): A sentence-based chunking object used to split documents into chunks. Defaults to the global `chunker`.
 
     Returns:
     -------
@@ -230,11 +233,12 @@ def chunk_text(text: str, chunker: SentenceSplitter=chunker) -> str:
 
 def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chunker) -> List[str]:
     """
+     Reads text from the given files and splits it into chunks using the provided SentenceSplitter.
 
     Parameters:
     ----------
-    - files (List[str]):
-    - chunker (SentenceSplitter):
+    - files (List[str]): A list of file paths to read and chunk.
+    - chunker (SentenceSplitter): A sentence-based chunking object used to split documents into chunks. Defaults to the global `chunker`.
 
     Returns:
     -------
@@ -251,38 +255,17 @@ def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chu
 ###########################
 ###ALL INPUTS - STORAGE###
 ###########################
-def reset_storage(db_name: str, schemas: list, faiss_name: str, faiss_index: FAISSFunctional):
-    """
-    Resets all storage.
-
-    Parameters:
-    ----------
-    - db_name (str):
-    - schemas (list):
-    - faiss_name (str):
-    - ffaiss_index (FAISSFunctional):
-    """
-
-    #Reset sqlite DB
-    if os.path.exists(db_name):
-        os.remove(db_name)
-    SQLiteFunctional(db_name, schemas)
-
-    #Reset vector index
-    faiss_index.reset_index(filename=faiss_name, autosave=True)
-    
-
 def add_chunks(faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional, embeddings: np.array, chunked_text: str, doc_uuid: str):
     """
     Adds document chunks to FAISS Index and SQLite DB.
 
     Parameters:
     ----------
-    - faiss_index (FAISSFunctional):
-    - sqlite_db (SQLiteFunctional):
-    - embeddings (np.array):
-    - chunked_text (str):
-    - doc_uuid (str):
+    - faiss_index (FAISSFunctional): The FAISS Index paired with the SQLite DB
+    - sqlite_db (SQLiteFunctional): The SQLite DB paired with the FAISS index
+    - embeddings (np.array): Embeddings to add to FAISS Index.
+    - chunked_text (str): The text to add to the SQLite DB.
+    - doc_uuid (str): The document's unique ID.
     """
 
     #Add embeddings to FAISS index
@@ -298,28 +281,69 @@ def add_chunks(faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional, embedd
         )
 
 
-def delete_document(document_uuid: str, faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional):
+def delete_document(doc_uuid: str, faiss_index: FAISSFunctional, sqlite_db: SQLiteFunctional):
     """
     Deletes single document from storage.
 
     Parameters:
     ----------
-    - document_uuid (str):
-    - faiss_index (FAISSFunctional):
-    - sqlite_db (SQLiteFunctional):
+    - doc_uuid (str): The document's unique ID.
+    - faiss_index (FAISSFunctional): The FAISS Index paired with the SQLite DB.
+    - sqlite_db (SQLiteFunctional): The SQLite DB paired with the FAISS index.
     """
 
+    #Remove vectors from FAISS Index
     vector_ids = sqlite_db.execute_query(
                                         """SELECT vector_id
                                             FROM chunks 
                                             WHERE doc_uuid = ?""",
-                                        (document_uuid,))
+                                        (doc_uuid,))
     vector_ids = [vector_id[0] for vector_id in vector_ids]                                                                            
     for vector_id in vector_ids:
         faiss_index.del_embs(vector_id, autosave=True)
 
-    sqlite_db.execute_cmd("DELETE FROM chunks WHERE doc_uuid = ?", (document_uuid,))
-    sqlite_db.execute_cmd("DELETE FROM documents WHERE uuid = ?", (document_uuid,))
+    #Delete document from local memory
+    names = sqlite_db.execute_query(
+                                """SELECT name
+                                    FROM documents 
+                                    WHERE uuid = ?""",
+                                (doc_uuid,))
+    for (name,) in names:
+        if os.path.exists(name):
+            os.remove(name)
+
+    #Delete corresponding chunks and documents from SQLite
+    sqlite_db.execute_cmd("DELETE FROM chunks WHERE doc_uuid = ?", (doc_uuid,))
+    sqlite_db.execute_cmd("DELETE FROM documents WHERE uuid = ?", (doc_uuid,))
+
+
+def reset_storage(sqlite_db: SQLiteFunctional, db_name: str, schemas: list, faiss_name: str, faiss_index: FAISSFunctional):
+    """
+    Resets all storage.
+
+    Parameters:
+    ----------
+    - db_name (str): The DB to reset.
+    - schemas (list): The schemas to reinitialize.
+    - faiss_name (str): File name FAISS Index is saved under.
+    - faiss_index (FAISSFunctional): FAISS Index to be reset.
+    """
+
+    #Delete documents from local memory
+    names = sqlite_db.execute_query(
+                            """SELECT name
+                                FROM documents""")
+    for (name,) in names:
+        if os.path.exists(name):
+            os.remove(name)
+
+    #Reset sqlite DB
+    if os.path.exists(db_name):
+        os.remove(db_name)
+    SQLiteFunctional(db_name, schemas)
+
+    #Reset vector index
+    faiss_index.reset_index(filename=faiss_name, autosave=True)
 
 
 ###########################
@@ -392,7 +416,7 @@ class DocumentManager:
 
         file_bytes = file_upload.read()
         text = file_bytes.decode("utf-8")
-        self.process_document(file_upload.name, text, ".txt")
+        self._process_document(file_upload.name, text, ".txt")
 
 
     def process_youtube(self, url: str):
@@ -404,11 +428,10 @@ class DocumentManager:
         - url (str): URL of YoutTube video to be processed.
         """
 
-        # title = retrieve_youtube_title(url)
+        # title = retrieve_youtube_title(url) #Requires cookies to be passed; won't work in Cloud Run deployed server env 
         raw_transcript = retrieve_youtube_transcript(url)
-        print(raw_transcript)
         text = repunctuate(raw_transcript)
-        title = create_title(text)
+        title = create_title(text) #Replacement for retrieve_youtube_title()
         self._process_document(title, text, "youtube", url)
 
 

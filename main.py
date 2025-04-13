@@ -76,7 +76,8 @@ if prompt := st.chat_input("What's up?"):
     try:
         #Embed user prompt and query FAISS Index
         q_emb = st.session_state["embedding_model"].encode([prompt], convert_to_numpy=True)
-        D, I = faiss_index.thread_controlled_query(q_emb, k=2)
+        D, I = faiss_index.thread_controlled_query(q_emb, k=5)
+
         #Use retrieved IDs to query SQLite DB for text
         query_I = tuple([str(i) for i in I[0]])
         placeholders = ",".join(["?"] * len(query_I))
@@ -86,10 +87,10 @@ if prompt := st.chat_input("What's up?"):
             WHERE vector_id in ({placeholders})
             """,
             query_I,)
+
         #Update context and system prompt
         context = "\n\n".join([f"[chunk-{i}] {chunk[0]}" for i, chunk in enumerate(res)])
         sys_prompt = f"{SYS_TEMPLATE}\n\n{context}"
-
     except Exception as e:
         st.error(f"Error during search: {e}")
 
