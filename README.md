@@ -12,7 +12,7 @@ Hippocampus is a lightweight Retrieval-Augmented Generation (RAG) app built with
 ### Storage Interactions
 - View stored documents
 - Delete specific documents
-- Reset storage entirely
+- Reset storage entirely 
 
 ### Context-aware LLM Responses via Semantic Search with FAISS
 - Retrieves the most relevant document chunks via semantic search (cosine similarity-based retrieval)
