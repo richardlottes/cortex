@@ -28,6 +28,8 @@ Hippocampus is a lightweight Retrieval-Augmented Generation (RAG) app built with
 ### Deployable on Google Cloud Run
 - Streamlit frontend served via GCP
 
+---
+
 ## Tech Stack
 - Streamlit — UI + session management
 - FAISS — vector similarity search
