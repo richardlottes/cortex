@@ -38,7 +38,6 @@ Cortex is a lightweight Retrieval-Augmented Generation (RAG) app built with Pyth
 - Mistral - OCR PDF processing
 - OpenAI — LLM responses
 - llama-index — for document parsing and node chunking
-- yt-dlp — (optional) YouTube transcript extraction
 
 ---
 
