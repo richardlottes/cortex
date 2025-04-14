@@ -53,6 +53,7 @@ class FAISSFunctional:
         """
         Whether the object has a filename or not.
         """
+
         return self.filename is not None and os.path.exists(self.filename)
 
     
@@ -259,6 +260,7 @@ class SQLiteFunctional:
     """
     Lightweight wrapper around SQLite3 to increase ease of use.
     """
+    
     def __init__(self, filename: str, schemas: Optional[List[str]]=None):
         self.filename = filename
         self.schemas = schemas
@@ -275,6 +277,7 @@ class SQLiteFunctional:
         """
         Initializes a SQLite DB.
         """
+        
         #Connects to db unless one doesn't exist in which case one is created
         with sqlite3.connect(self.filename) as conn:
             #Create cursor object to execute SQL with
@@ -298,6 +301,7 @@ class SQLiteFunctional:
         - command (str): The command to be executed.
         - objects (Tuple[any]): Any objects that will be dynamically used in the command.
         """
+
         #Connects to db unless one doesn't exist in which case one is created
         with sqlite3.connect(self.filename) as conn:
             cur = conn.cursor()
@@ -317,6 +321,7 @@ class SQLiteFunctional:
         -------
         - Query results.
         """
+        
         #Connects to db unless one doesn't exist in which case one is created
         with sqlite3.connect(self.filename) as conn:
             cur = conn.cursor()

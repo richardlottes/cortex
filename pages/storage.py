@@ -24,6 +24,12 @@ if "sqlite_dbs" not in st.session_state:
     st.session_state["sqlite_dbs"] = {} #maps index name -> SQLiteFunctional
 sqlite_db = get_db(db_name, schemas)
 
+#Add session information to UI
+with st.sidebar.expander("Session Info"):
+    st.markdown(f"🔑 Session ID: `{st.session_state.session_id}`")
+    st.markdown(f"🗂️ DB: `{db_name}`")
+    st.markdown(f"💾 Index: `{vector_index_name}`")
+
 #Manually force resetting keys inline on each rerun to avoid duplication bugs; can't do this in a function as functions run after widget rehydration
 keys = ["doc", "yt", "text"]
 for key in keys:
