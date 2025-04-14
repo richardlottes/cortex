@@ -46,7 +46,7 @@ Cortex is a lightweight Retrieval-Augmented Generation (RAG) app built with Pyth
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/yourusername/cortex.git
+git clone git@github.com:richardlottes/cortex.git
 cd cortex
 ```
 
