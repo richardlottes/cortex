@@ -8,7 +8,12 @@ from utils.processing import (
     DocumentManager
 )
 from utils.streamlit_helpers import get_db, get_index, display_pdf, st_success_reset, st_failure_reset
-from utils.config import schemas, dim, embed_model
+from configs.schemas import schemas
+from configs.llm import dim
+from configs.embed import load_embed_model
+
+
+embed_model = load_embed_model()
 
 #Initialize session ID and storage names inline; can't do this in a function as functions run after widget rehydration
 if "session_id" not in st.session_state:
@@ -23,7 +28,8 @@ faiss_index = get_index(vector_index_name, dim)
 if "sqlite_dbs" not in st.session_state:
     st.session_state["sqlite_dbs"] = {} #maps index name -> SQLiteFunctional
 sqlite_db = get_db(db_name, schemas)
-
+    
+    
 #Add session information to UI
 with st.sidebar.expander("Session Info"):
     st.markdown(f"🔑 Session ID: `{st.session_state.session_id}`")
