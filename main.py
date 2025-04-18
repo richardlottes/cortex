@@ -82,18 +82,18 @@ if prompt := st.chat_input("What's up?"):
     show_chunks = st.sidebar.toggle("Show retrieved context", value=False, disabled=True)
 
 
-    # #Add user message to chat history
-    # st.session_state["messages"].append(
-    #     {
-    #     "role":"user",
-    #     "content":[
-    #             {
-    #                 "type": "input_text",
-    #                 "text": prompt
-    #             }
-    #         ]
-    #     }
-    # )
+    #Add user message to chat history
+    st.session_state["messages"].append(
+        {
+        "role":"user",
+        "content":[
+                {
+                    "type": "input_text",
+                    "text": prompt
+                }
+            ]
+        }
+    )
     
     #
     with st.chat_message("user"):
