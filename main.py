@@ -1,17 +1,17 @@
-import streamlit as st
 import sys
 import os
-# import atexit
-import streamlit as st
-from dotenv import load_dotenv
-from sentence_transformers import SentenceTransformer
-from openai import OpenAI
 import uuid
+
+import streamlit as st
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from utils.functionals import FAISSFunctional, SQLiteFunctional
 from utils.streamlit_helpers import get_index, get_db
-from utils.config import schemas, dim, openai_client, embed_model, SYS_TEMPLATE
+from utils.processing import llm_stream
+from configs.schemas import schemas
+from configs.llm import dim, MODELS, SYS_TEMPLATE
+from configs.embed import load_embed_model
+
 
 #Explicitly set to avoid forked process warning
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -54,17 +54,16 @@ sqlite_db = get_db(db_name, schemas)
 
 if "embedding_model" not in st.session_state:
     # embed_model = SentenceTransformer("all-MiniLM-L6-v2")
-    st.session_state["embedding_model"] = embed_model
+    st.session_state["embedding_model"] = load_embed_model()
 
 #Initialize chat history
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
 
-#Add session information to UI
-with st.sidebar.expander("Session Info"):
-    st.markdown(f"🔑 Session ID: `{st.session_state.session_id}`")
-    st.markdown(f"🗂️ DB: `{db_name}`")
-    st.markdown(f"💾 Index: `{vector_index_name}`")
+#
+if "res" not in st.session_state:
+    st.session_state["res"] = None
+
 
 #Display chat messages from history on app rerun
 for message in st.session_state.messages:
@@ -75,22 +74,28 @@ for message in st.session_state.messages:
             elif message["role"] == "user":
                 st.markdown(message["content"][0]["text"])
 
-#Add checkbox to show retrieved context from RAG
-show_chunks = st.checkbox("Show retrieved context", value=False)
-
 #Accept inputs
 if prompt := st.chat_input("What's up?"):
-    #Add user message to chat history
-    st.session_state.messages.append(
-        {
-        "role":"user",
-        "content":[
-                {
-                    "type": "input_text",
-                    "text": prompt
-                }
-            ]
-        })
+    #Model selector
+    model = st.sidebar.selectbox("Select a model", MODELS.keys(), disabled=True)
+    #Add checkbox to show retrieved context from RAG
+    show_chunks = st.sidebar.toggle("Show retrieved context", value=False, disabled=True)
+
+
+    # #Add user message to chat history
+    # st.session_state["messages"].append(
+    #     {
+    #     "role":"user",
+    #     "content":[
+    #             {
+    #                 "type": "input_text",
+    #                 "text": prompt
+    #             }
+    #         ]
+    #     }
+    # )
+    
+    #
     with st.chat_message("user"):
         st.markdown(prompt)
 
@@ -111,20 +116,15 @@ if prompt := st.chat_input("What's up?"):
                 """,
                 query_I,)
 
-            #Update context and system prompt
-            context = "\n\n".join([f"[chunk-{i}] {chunk[0]}" for i, chunk in enumerate(res)])
+            #
+            st.session_state["res"] = res
+
+            #Update context and system prompts
+            context = "\n\n".join([f"[chunk-{i+1}] {chunk[0]}" for i, chunk in enumerate(res)])
             sys_prompt = f"{SYS_TEMPLATE}\n\n{context}"
-
-            #Show context chunks used in RAG
-            if show_chunks:
-                st.markdown("### 📚 Context Chunks Used in Answer")
-
-                for i, chunk in enumerate(res):
-                    with st.expander(f"Chunk {i+1}", expanded=False):
-                        st.markdown(chunk[0])
-
         except Exception as e:
-            st.error(f"Error during search: {e}")
+            sys_prompt = SYS_TEMPLATE
+            st.error(f"No chunks retrieved during search")
 
     #Prepend/replace system prompt with updated context from RAG
     st.session_state["messages"] = [
@@ -139,32 +139,47 @@ if prompt := st.chat_input("What's up?"):
         } 
     ] + st.session_state["messages"]
 
-    #Hit OpenAI endpoint with messages
+    #Hit LLM endpoint with messages
     with st.chat_message("assistant"):
         response_placeholder = st.empty()
-        full_response = ""
-
-        stream = openai_client.responses.create(
-            model="gpt-4o-mini-2024-07-18",
-            input = [
-                {
-                    "role": message["role"],
-                "content": message["content"]
-                }
-                for message in st.session_state["messages"]
-            ],
-            stream=True
-        )
         
-        #Stream tokens
-        for tok in stream:
-            if hasattr(tok, "delta"):
-                full_response += tok.delta
-                response_placeholder.markdown(full_response + "▌")            
-            response_placeholder.markdown(full_response)
+        messages =  [
+            {
+                "role": message["role"],
+                "content": message["content"]
+            } for message in st.session_state["messages"]
+        ]
 
-    #Append repsonse to messages
+        output = ""
+        #Stream tokens
+        for event in llm_stream(messages, llm=MODELS[model], model=model):
+            output += event
+            response_placeholder.markdown(output + "▌")            
+
+    #Append response to messages
     st.session_state.messages.append({
         "role":"assistant",
-        "content":full_response
+        "content":output
     })
+    st.rerun()
+else:
+    #Model selector
+    model = st.sidebar.selectbox("Select a model", MODELS.keys(), disabled=False)
+    #Add checkbox to show retrieved context from RAG
+    show_chunks = st.sidebar.toggle("Show retrieved context", value=False, disabled=False)
+
+#Show context chunks used in RAG
+if show_chunks and st.session_state["res"] is not None:
+    st.sidebar.markdown("### 📚 Context Chunks Used in Answer")
+    for i, chunk in enumerate(st.session_state["res"]):
+        with st.sidebar.expander(f"Chunk {i+1}", expanded=False):
+            st.markdown(chunk[0])
+            st.markdown("---")
+
+st.sidebar.markdown("---")
+
+#Add session information to UI
+with st.sidebar.expander("Session Info"):
+    st.markdown(f"🔑 Session ID: `{st.session_state.session_id}`")
+    st.markdown(f"🗂️ DB: `{db_name}`")
+    st.markdown(f"💾 Index: `{vector_index_name}`")

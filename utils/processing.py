@@ -2,7 +2,7 @@ import os
 import pickle
 import re
 import uuid
-from typing import List, Optional
+from typing import List, Dict, Optional
 
 import numpy as np
 
@@ -14,8 +14,14 @@ from llama_index.core import SimpleDirectoryReader
 from llama_index.core.schema import Document
 
 from utils.functionals import FAISSFunctional, SQLiteFunctional
-from utils.config import mistral_client, chunker, openai_client
+from configs.llm import load_chunker, get_openai_client, get_mistral_client, get_anthropic_client
+from configs.enums import LLM
 
+
+openai_client = get_openai_client()
+anthropic_client = get_anthropic_client()
+mistral_client = get_mistral_client()
+chunker = load_chunker()
 
 ###########################
 ###PDF (OCR)###
@@ -446,3 +452,96 @@ class DocumentManager:
 
         title = create_title(text)
         self._process_document(title, text, "text")
+
+###LLM CALLS###
+def stream_openai(messages: List[Dict], model="gpt-4o-mini"):
+    """
+
+        [
+            {
+                "role": message["role"],
+                "content": message["content"]
+            }
+            for message in messages
+        ],
+    """
+    
+    try:
+        stream = openai_client.responses.create(
+            model=model,
+            input = messages,
+            stream=True
+        )
+        for event in stream:
+            if hasattr(event, "delta"):
+                yield event.delta
+    except Exception as e:
+        print(e)
+        raise
+
+
+def stream_anthropic(messages: List[Dict], model="claude-3-haiku"):
+    """
+    
+    """
+
+    try:
+        with anthropic_client.messages.stream(
+            model=model,
+            max_tokens=1024,
+            messages=messages
+        ) as stream:
+            for event in stream:
+                if event.type == "content_block_delta":
+                    yield event.delta.text
+    except Exception as e:
+        print(e)
+        raise
+
+
+def convert_to_anthropic(messages: List[Dict]):
+    """
+    
+    """
+
+    system_prompt = ""
+    converted = []
+
+    for m in messages:
+        role = m["role"]
+        raw_content = m["content"]
+
+        # Convert content list (with type "input_text") into one string
+        if isinstance(raw_content, list):
+            # Replace "input_text" with "text" and extract text content
+            parts = [block["text"] for block in raw_content if block.get("type") in ["input_text", "text"]]
+            content = "\n\n".join(parts)
+        else:
+            content = raw_content  # Already a string
+
+        # Prepend system prompt to first user message
+        if role == "system":
+            system_prompt = content
+        elif role in ["user", "assistant"]:
+            if system_prompt and role == "user":
+                content = f"{system_prompt}\n\n{content}"
+                system_prompt = ""
+            converted.append({"role": role, "content": content})
+
+    return converted
+
+
+
+def llm_stream(messages: List[Dict], llm: LLM='openai', model="gpt-4o-mini"):
+    """
+    
+    """
+
+    if llm == 'openai':
+        yield from stream_openai(messages, model)
+    elif llm == 'anthropic':
+        yield from stream_anthropic(convert_to_anthropic(messages), model)
+    
+
+
+
