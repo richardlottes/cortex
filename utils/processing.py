@@ -480,7 +480,7 @@ def stream_openai(messages: List[Dict], model="gpt-4o-mini"):
         raise
 
 
-def stream_anthropic(messages: List[Dict], model="claude-3-haiku"):
+def stream_anthropic(messages: List[Dict], model="claude-3-haiku-20240307"):
     """
     
     """
@@ -499,6 +499,29 @@ def stream_anthropic(messages: List[Dict], model="claude-3-haiku"):
         raise
 
 
+def openai_message_template(role: str, prompt: str) -> dict:
+    """
+    
+    """
+
+    if role in ("user", "system"):
+        type_ = "input_text"
+    elif role == "assistant":
+        type_ = "output_text"
+    else:
+        raise ValueError(f"Unknown role: {role}")
+
+    return {
+        "role": role,
+        "content": [
+            {
+                "type": type_,
+                "text": prompt
+            }
+        ]
+    }
+
+
 def convert_to_anthropic(messages: List[Dict]):
     """
     
@@ -506,20 +529,11 @@ def convert_to_anthropic(messages: List[Dict]):
 
     system_prompt = ""
     converted = []
-
     for m in messages:
         role = m["role"]
-        raw_content = m["content"]
+        content = m["content"][0]["text"]
 
-        # Convert content list (with type "input_text") into one string
-        if isinstance(raw_content, list):
-            # Replace "input_text" with "text" and extract text content
-            parts = [block["text"] for block in raw_content if block.get("type") in ["input_text", "text"]]
-            content = "\n\n".join(parts)
-        else:
-            content = raw_content  # Already a string
-
-        # Prepend system prompt to first user message
+        #Prepend system prompt to first user message
         if role == "system":
             system_prompt = content
         elif role in ["user", "assistant"]:
@@ -527,7 +541,6 @@ def convert_to_anthropic(messages: List[Dict]):
                 content = f"{system_prompt}\n\n{content}"
                 system_prompt = ""
             converted.append({"role": role, "content": content})
-
     return converted
 
 

@@ -18,8 +18,12 @@ def load_chunker():
 #Initialize foundation model clients
 def get_openai_client():
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+
 def get_anthropic_client():
     return Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+
 def get_mistral_client():
     return Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
 

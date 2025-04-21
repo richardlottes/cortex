@@ -1,8 +1,9 @@
 import os
 import base64
-from typing import List
+from typing import List, Dict
 from time import sleep
 
+from textwrap import shorten
 import streamlit as st
 
 from utils.functionals import FAISSFunctional, SQLiteFunctional
@@ -112,3 +113,37 @@ def st_failure_reset(e: Exception, reset_key: str):
     st.session_state[reset_key] = True
     sleep(5)
     st.rerun()
+
+
+def view_context(context: List[Dict], message_n: int):
+    if context:
+        max_sim = max([chunk["similarity"] for chunk in context])
+        if max_sim < 0.3:
+            st.warning(f"Low confidence: Max similarity is {max_sim:.2f}")
+        with st.expander("View context", expanded=False):
+                for i, chunk in enumerate(context):
+                    st.markdown(f"**Chunk {i+1} - Similarity: {chunk['similarity']:.2f}**")
+                    preview = shorten(chunk["text"], width=300, placeholder="...")
+                    st.text(preview)
+                    if len(chunk["text"]) > 200:
+                        if st.toggle(f"Show full Chunk {i+1}", key=f"message_{message_n}_chunk_{i}"):
+                            st.markdown(chunk["text"])
+    else:
+        st.warning("Low confidence: No context retreived")
+
+
+def view_message_history(messages: List[Dict], show_chunks: bool):
+    """
+    
+    """
+
+    for i, message in enumerate(messages):
+        if message['role'] != "system":
+            with st.chat_message(message["role"]):
+                if message["role"] == "assistant":
+                    if show_chunks:
+
+                        view_context(message.get("context", []), i)
+                    st.markdown(message["content"][0]["text"])
+                elif message["role"] == "user":
+                    st.markdown(message["content"][0]["text"])

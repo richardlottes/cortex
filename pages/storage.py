@@ -13,11 +13,13 @@ from configs.llm import dim
 from configs.embed import load_embed_model
 
 
-embed_model = load_embed_model()
+if "embed_model" not in st.session_state:
+    st.session_state["embed_model"] = load_embed_model()
+embed_model = st.session_state["embed_model"]
 
 #Initialize session ID and storage names inline; can't do this in a function as functions run after widget rehydration
 if "session_id" not in st.session_state:
-    st.session_state.session_id = str(uuid.uuid4())
+    st.session_state["session_id"] = str(uuid.uuid4())
 db_name = f"""{st.session_state["session_id"]}.db"""
 vector_index_name = f"""{st.session_state["session_id"]}.faiss"""
 
