@@ -1,0 +1,46 @@
+Which Learning Methods Actually Work?
+
+Here’s an interesting article on the effectiveness of various study techniques—and in particular—which ones have evidence supporting them.
+
+Some of my thoughts on the key findings:
+
+Self-Explanation and Reading
+Elaborative learning and self-explanation were found to be moderately effective. This is similar to the Feynman technique, but I’d argue the use of the method was different (I mainly use this method to hunt out specific misunderstandings, not as a general catch-all which is usually too time consuming as indicated by the research).
+
+Summarizing and highlighting were found to be ineffective. I was surprised about the finding on summarizing, but the note on highlighting was what I expected. Perhaps some of the problem with summarizing is that it lacks a feedback mechanism to know whether you’ve actually gathered the key details?
+
+Rereading was found to be ineffective. No surprises here. Passive review strategies are less effective than active ones.
+
+Visualization and Mnemonics
+The keyword mnemonic (using visual links to memorize words) was labelled “ineffective” but probably a better description of the actual findings is that it has more narrow usage.
+
+Visualization while reading was found to be ineffective. I found this interesting, given my advice to students to visualize. However, it seems like the issue may be that visualization while reading is distracting. In addition, I’ve always felt the major benefits of visualizing are for abstract subjects, which don’t naturally lend themselves to images, as opposed to the concrete subjects measured here.
+
+Practice and Spacing Were The Most Effective Methods
+Practice was one of the most effective methods studied. This was a staple of the MIT Challenge, probably making up 50% of the total time I spend working through the courses. I found it interesting that practice questions were still effective even when you created the questions yourself—a good alternative if practice exams are unavailable.
+
+Spacing effects were shown as being effective as well. During the MIT Challenge I tried to make use of spacing as much as possible, doing classes in parallel after the first few classes. It was an unfortunate weakness of the tight time-constraint premise of the challenge, however. I’d recommend most students looking to follow my self-education attempt to spread out their learning over a longer period of time and at a lower intensity than I did.
+
+I find the spacing effects on learning to be somewhat tricky because I’ve also found focus to be enormously effective for getting things done. Juggling a couple different learning projects at the same time to be far harder to manage than being dedicated to only one or two.
+
+Ultimately, there may be a trade-off between spacing and focus—you want the spacing to ensure better long-term recall, but you want the focus to actually get the work done.
+
+Science, Experience and What Actually Works
+Scientific research on the efficacy of different learning techniques has been a very useful counterbalance for me to the methods I’ve developed through practical experience.
+
+I’m only a single data point. Although I collect a lot of observations and data from my students in my courses, the empirical rigor of a self-selected online course is not the same as a scientific paper. Placebo effects and the lack of control groups mean that it’s important to return to the psychological research for checks and balances.
+
+However studies are often designed to measure the outcome of a very narrow set of conditions. If the conditions change from the experiment, the results may be very different. I end up relying a lot on practical experience to fill in those gaps in my own self-learning efforts.
+
+Opinions I’ve Changed Since Learn More, Study Less
+I find myself learning a lot about learning, as more research like this comes out and I get exposed to different learning situations and am forced to adapt. While I still support the most of the main points of Learn More, Study Less, I’ve evolved considerably on my views since then.
+
+Here are the major opinions I’ve shifted:
+
+Repetition isn’t a bad thing (even if repetition alone probably is).
+Speed reading is only narrowly useful. In most learning situations, reading at a deeper level of processing and reading more slowly is better.
+Practice and active recall should be a bulk of your strategy. I haven’t given enough emphasis on active recall in the past, even though it should probably form a large chunk of your learning time.
+Spaced repetition software can be quite useful. I’ve flipped my thinking on this point since I mentioned it earlier. To me the disadvantages of decontextualized and unprioritized knowledge are outweighed by the automatic structuring of review and active recall.
+Don’t highlight. I used to have highlighting as part of an active reading strategy, but now I’m inclined to avoid it altogether. Taking sparse notes is better.
+Holistic learning is still valid for law and languages. I expressed doubts in my initial ebook as to whether learning via connections was appropriate for densely factual subjects, but since then I’ve found it useful for these subjects nonetheless.
+A major challenge for me is that, in spending a lot of time learning, my opinions grow with time. Hopefully my minor reversals and shifts in emphasis don’t irk or confuse longtime readers too much. The alternative is to be dogmatic, an unsupportable long-term strategy.

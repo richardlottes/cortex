@@ -1,0 +1,164 @@
+Table of Contents
+What Is the Money Market?
+How It Works
+Who Can Invest?
+The One-Buck Baseline
+Types of Instruments
+Money Markets vs. Capital Markets
+Pros and Cons
+Money Market FAQs
+The Bottom Line
+Bonds Fixed Income
+Money Markets: What They Are, How They Work, and Who Uses Them
+By Adam Hayes Updated July 04, 2024
+Reviewed by Michael J Boyle
+Fact checked by Yarilet Perez
+Definition
+The money market involves the purchase and sale of large volumes of very short-term debt products, such as overnight reserves or commercial paper.
+What Is the Money Market?
+The money market refers to trading in very short-term debt investments. It involves continuous large-volume trades between institutions and traders at the wholesale level. It includes money market mutual funds bought by individual investors and money market accounts opened at banks at the retail level.
+
+The money market is characterized by a high degree of safety and relatively low rates of return on investment.
+
+Key Takeaways
+The money market involves the purchase and sale of large volumes of very short-term debt products such as overnight reserves or commercial paper.
+An individual can invest in the money market by purchasing a money market mutual fund, buying a Treasury bill, or by opening a money market account at a bank.
+Money market investments are characterized by safety and liquidity with money market fund shares targeted at $1.
+Money market accounts offer higher interest rates than normal savings accounts but they have higher account minimums and limits on withdrawals.
+Understanding the Money Market
+The money market is one of the pillars of the global financial system. It involves overnight swaps of vast amounts of money between banks and the U.S. government. The majority of money market transactions are wholesale transactions that take place between financial institutions and companies.
+
+Institutions that participate in the money market include banks that lend to each other and to large companies in the euro currency and time deposit markets. They also include companies that raise money by selling commercial paper into the market and investors who purchase bank CDs as a safe place to park money in the short term.
+
+Fast Fact
+Some of those wholesale transactions eventually make their way into the hands of consumers as components of money market mutual funds and other investments.
+
+Who Can Invest in the Money Market?
+Individuals can invest in the money market by buying money market funds, short-term certificates of deposit (CDs), municipal notes, or U.S. Treasury bills. The money market has retail locations for individual investors. They include local banks, the U.S. government's TreasuryDirect website, and brokerages.
+
+Take the Next Step to Invest
+Advertiser Disclosure
+
+
+
+The One-Buck Baseline
+Money market funds seek stability and security with the goal of never losing money and keeping net asset value (NAV) at $1. This one-buck NAV baseline gave rise to the phrase "break the buck." Some of the original investment is gone and investors will lose money if the value falls below the $1 level.
+
+This scenario happens very rarely, however. It last occurred in 2008 and involved a fund that held assets of the bankrupt Lehman Brothers investment company. Its investors eventually received 98 cents on the dollar.
+1
+
+Many money market funds aren't FDIC-insured so they can nonetheless lose money.
+2
+
+Types of Money Market Instruments
+Money Market Funds
+The wholesale money market is limited to companies and financial institutions that lend and borrow in amounts ranging from $5 million to well over $1 billion per transaction. Mutual funds offer baskets of these products to individual investors. The net asset value (NAV) of such funds is intended to stay at $1.
+
+Money Market Accounts 
+Money market accounts are a type of savings account. They pay slightly higher interest rates than regular savings accounts but they often come with restrictions on withdrawing money or writing checks. Withdrawals are limited by federal regulations. The bank will promptly convert the money market account to a checking account if the limits are exceeded.
+
+Banks typically calculate interest on a money market account daily and make a monthly credit to the account.
+
+Average interest rates for money market accounts can vary based on the amount deposited. The best-paying money market account advertised online as of July 2024 was offered by Brilliant Bank at 5.35% with a $1,000 minimum deposit.
+3
+
+Money market accounts have become more popular because of their perceived safety compared to more volatile investments given a high interest rate market.
+
+Important
+Funds in money market accounts are insured by the Federal Deposit Insurance Corporation (FDIC) when they're held at banks and the National Credit Union Administration (NCUA) when they're held in credit unions.
+2
+4
+ 
+
+Certificates of Deposit (CDs)
+Most certificates of deposit (CDs) aren't strictly money market funds because they're sold with terms of up to 10 years. CDs with terms as short as three months to six months are available, however.
+
+Larger deposits and longer terms yield better interest rates just as they do with money market accounts. Rates in early July 2024 ranged from about 5.35% to 6.00%.
+
+The rates offered on a CD remain constant for the deposit period, unlike with a money market account. There's usually a penalty associated with an early withdrawal of funds from a CD. They've gained in popularity due to their safety and the relatively high rates available, however.
+
+U.S. Treasury Bills
+The U.S. government issues Treasury bills in the money market with maturities ranging from a few days to one year. Cash management bills come with maturities of a few days to one year.
+5
+6
+
+Primary dealers buy these bills in large amounts directly from the government to trade between themselves or to sell to individual investors. Individual investors can buy them directly from the government through the TreasuryDirect website or a bank or a broker. State, county, and municipal governments also issue short-term notes.
+
+Commercial Paper
+The commercial paper market is for buying and selling unsecured loans for corporations in need of a short-term cash infusion. Only highly creditworthy companies participate in this market so the risks remain low.
+
+Commercial paper is a popular borrowing mechanism in the wholesale market because the interest rates are higher than for bank time deposits or Treasury bills. A greater range of maturities is available as well, averaging about 30 days and extending up to nine months.
+7
+ The risk of default is significantly higher for commercial paper than for bank or government instruments, however.
+
+Banker's Acceptances
+A banker's acceptance is a short-term loan that's guaranteed by a bank. Used extensively in foreign trade, a banker's acceptance is like a post-dated check. It serves as a guarantee that an importer who has ordered goods can pay for them.
+
+There's a secondary market for buying and selling banker's acceptances at a discount.
+
+Eurodollars
+Eurodollars are dollar-denominated deposits held in foreign banks so they're not subject to Federal Reserve regulations. Very large deposits of eurodollars are held in banks in the Cayman Islands and the Bahamas.
+
+Money market funds, foreign banks, and large corporations invest in them because they pay a slightly higher interest rate than U.S. government debt.
+
+Repos
+The repo or repurchase agreement is part of the overnight lending money market. Treasury bills or other government securities are sold to another party with an agreement to repurchase them at a set price on a set date.
+
+Money Markets vs. Capital Markets
+The money market is defined as dealing in debt of less than one year. It's used primarily by governments and corporations to keep their cash flows steady and by investors to make a modest profit.
+
+The capital market is dedicated to the sale and purchase of long-term debt and equity instruments.
+
+The term "capital markets" refers to the entirety of the stock and bond markets. Stocks have no expiration date unless the company itself ceases to operate, unlike many money market products,
+
+Advantages and Disadvantages of Money Markets
+Most money market securities are considered extremely low-risk due to the protection of FDIC insurance, backing by a government or bank, or the high creditworthiness of the borrowers. They're also very liquid. They can readily be exchanged for cash at short notice.
+
+The tradeoff is that these investments have low returns. Money markets generally underperform other asset classes and often don't even keep pace with inflation. Any fees associated with an account can easily eat into these slim returns. And these advantages don't extend to all money market securities. Some aren't FDIC insured and there's a chance that even the most trustworthy borrowers may default.
+
+Some money market accounts have minimum balance requirements or restrictions on withdrawals.
+
+Pros and Cons of Money Market Accounts
+Pros
+Extremely low risk
+
+May be insured by FDIC
+
+Highly liquid
+
+Higher returns than most bank accounts
+
+Cons
+Low returns that may not keep pace with inflation
+
+Not all money market securities are insured
+
+May have high minimum investments or withdrawal restrictions
+
+Why Is It Called the Money Market?
+The money market deals in highly liquid, very safe, short-term debt securities and these attributes make them virtual cash equivalents. They can be exchanged for cash at short notice.
+
+Why Is the Money Market Important?
+The money market keeps the financial economy running smoothly. It allows savers to lend money to those in need of short-term loans and it allocates capital toward its most productive use.
+
+These loans are often made overnight or for a matter of days or weeks. They're needed by governments, corporations, and banks to meet their near-term obligations or regulatory requirements. And they allow those with some excess cash on hand to earn a small amount of interest.
+
+What Are Some Examples of Money Market Instruments?
+The money market is composed of several types of securities including short-term Treasuries (T-bills), certificates of deposit (CDs), commercial paper, repurchase agreements (repos), and money market mutual funds that invest in these instruments. The money market funds typically have shares priced at $1.
+
+Can You Lose Money in the Money Market?
+Most money market accounts are insured by the FDIC up to $250,000 per institution, just like bank deposits. There's virtually no chance you'll lose your money by owning a CD or T-bill because money market instruments are very low risk.
+
+Some money market funds can "break the buck" and briefly incur losses during periods of extreme financial stress such as at the height of the 2008 financial crisis. This was quickly corrected, however.
+
+What Are the Downsides of Money Markets?
+Money market investments pay very low returns because they're virtually risk-free. They can't provide substantial capital gains or investment growth compared to riskier assets like stocks or even bonds.
+
+Some types of money market accounts like CDs lock your money up until a future date that can be months or even years ahead.
+
+Individual investors should also look carefully at the fees they'll be charged for money market accounts. They can eat into the already modest rates of return on these investments.
+
+The Bottom Line
+Money market accounts and money market funds are among the safest ways to invest money. They also have much lower returns than other investments and they may even fail to keep up with inflation.
+
+Many individuals and businesses use money markets as a short-term investment for their cash reserves. These investments are virtually risk-free and offer at least a modest return on savings.
