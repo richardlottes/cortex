@@ -1,9 +1,10 @@
 # 🧠 Cortex: A Lightweight RAG App for Document Search
 Cortex is a lightweight Retrieval-Augmented Generation (RAG) app built with Python and Streamlit. It allows users to upload documents (PDFs, TXT files, YouTube videos, raw text) and query them using natural language via an LLM, backed by a semantic search engine and persistent local memory.
+
 ---
 
-## Demo
 https://github.com/richardlottes/cortex/assets/cortex_demo.mov
+
 ---
 
 ## Features
