@@ -1,10 +1,10 @@
 import os
 import uuid
-import sqlite3
 from typing import Optional, Tuple, List, Any
 
 import numpy as np
 import faiss
+import sqlite3
 
 
 class FAISSFunctional:

@@ -29,10 +29,13 @@ frozenlist==1.5.0
 fsspec==2025.3.2
 gitdb==4.0.12
 GitPython==3.1.44
+google-ai-generativelanguage==0.6.15
 google-api-core==2.24.2
+google-api-python-client==2.168.0
 google-auth==2.38.0
+google-auth-httplib2==0.2.0
 google-cloud-secret-manager==2.16.2
-google-genai==1.11.0
+google-generativeai==0.8.5
 googleapis-common-protos==1.59.1
 greenlet==3.1.1
 griffe==1.7.2
@@ -82,6 +85,7 @@ packaging==24.2
 pandas==2.2.3
 pillow==11.1.0
 platformdirs==4.3.7
+plotly==6.0.1
 propcache==0.3.1
 proto-plus==1.26.1
 protobuf==4.24.4
@@ -128,9 +132,9 @@ typing-inspect==0.9.0
 typing-inspection==0.4.0
 typing_extensions==4.13.0
 tzdata==2025.2
+uritemplate==4.1.1
 urllib3==2.3.0
 watchdog==6.0.0
-websockets==15.0.1
 wrapt==1.17.2
 yarl==1.18.3
 youtube-transcript-api==1.0.3

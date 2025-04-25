@@ -2,27 +2,74 @@ import sys
 import os
 import json 
 import math
-from typing import Dict
+from typing import Tuple, List
+
+import numpy as np 
+import pandas as pd
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import faiss
+
 from utils.functionals import FAISSFunctional
 from utils.processing import chunk_text
+
+from configs.constants import CORPUS_PATH, QA_RELEVANCE_PATH
 from configs.llm import load_splitter, ANCHORS
 from configs.embed import load_embed_model
-import numpy as np
-import pandas as pd
+
+
 
 embedding_model = load_embed_model()
 
+
 def recall_k(returned_relevant: int, total_relevant: int) -> float:
+    """
+    Computes Recall@k
+
+    Parameters:
+    ----------
+    - returned_relevant (int): The number of relevant chunks returned 
+    - total_relevant (int): The total relevant chunks for the question
+
+    Returns:
+    -------
+    - Recall@k
+    """
+
     return round(returned_relevant/total_relevant, 2)
 
 
 def precision_k(returned_relevant: int, k: int) -> float:
+    """
+    Computes Precision@k
+
+
+    Parameters:
+    ----------
+    - returned_relevant (int): The number of relevant chunks returned
+    - k (int): The number of items to be retrieved
+
+    Returns:
+    -------
+    - Precision@k
+    """
+
     return round(returned_relevant/k, 2)
 
 
-def dcg_k(retrieved_ids, relevant_ids):
+def dcg_k(retrieved_ids: List[int], relevant_ids: List[int]) -> float:
+    """
+    Computes DCG@k
+
+    Parameters:
+    ----------
+    - retrieved_ids (List[int]): A list of retrieved chunks
+    - relevant_ids (List[int]): A list of relevant chunks
+
+    Returns:
+    -------
+    - DCG@k
+    """
+
     dcg = 0.0
     for i, chunk_id in enumerate(retrieved_ids):
         if chunk_id in relevant_ids:
@@ -30,7 +77,21 @@ def dcg_k(retrieved_ids, relevant_ids):
 
     return dcg
 
-def ndcg_k(dcg, relevant_ids, k):
+def ndcg_k(dcg: float, relevant_ids: List[int], k: int) -> float:
+    """
+    Computes nDCG@k
+
+    Parameters:
+    ----------
+    - dcg (float): The DCG value computed with dcg_k()
+    - relevant_ids (List[int]): A list of relevant chunks
+    - k (int): The number of items to be retrieved
+
+    Returns:
+    -------
+    - nDCG@k
+    """
+
     ideal_rels = [1] * min(len(relevant_ids), k)
     idcg = sum([rel/math.log2(i+2) for i, rel in enumerate(ideal_rels)])
 
@@ -39,26 +100,34 @@ def ndcg_k(dcg, relevant_ids, k):
     return round(dcg/idcg, 2)
 
 
-def extract_doc_id_chunk_idx(faiss_id):
+def extract_doc_id_chunk_idx(faiss_id: int) -> Tuple(int, int):
     """
-    
+    Extracts document ID and chunk index for tie back 
+
+    Parameters:
+    ----------
+    - FAISS ID constructed from a doc_id and chunk_idx
+
+    Returns:
+    -------
+    - Document ID and chunk index
     """
+
     doc_id = (faiss_id-1000) // 1000
     chunk_idx = (faiss_id-1000) % 1000
     return doc_id, chunk_idx
 
-#READ CORPUS
+
 def build_indexes():
     """
-    
+    Builds and saves FAISS indexes with chunks to be used in evaluation
     """
-    with open("evaluation/corpus.json", "r", encoding="utf-8") as f:
-        
-        #Load up corpus and qa pairs & instantiate a dict to hold anchor <> faiss index map
+    
+    #Load Corpus and QA Pairs
+    with open(CORPUS_PATH, "r", encoding="utf-8") as f:
         corpus = json.load(f)
-        anchor_faiss_map = dict()
 
-        #Iterate over anchors
+        #Iterate over chunk sizes (anchors)
         for anchor in ANCHORS:
             #Build FAISSFunctional for each anchor (chunk size) & instantiate splitter
             faiss_functional = FAISSFunctional(embedding_dim=embedding_model.get_sentence_embedding_dimension())
@@ -71,19 +140,35 @@ def build_indexes():
                     emb = embedding_model.encode(chunk)
                     faiss_id = (1+doc['id'])*1000 + i
                     faiss_functional.add_embs(emb.reshape(1, -1), custom=[faiss_id])
-            #At end of anchor iteration, set FAISSFunctional object to corresponding anchor key in map
+            #At end of anchor iteration, save FAISSFunctional
             faiss_functional.save(f"evaluation/eval_{str(anchor)}.faiss")
     
         
-def evaluate_top_k(k: int=3):
+def evaluate_top_k(k: int=3) -> pd.DataFrame:
     """
-    
+    Evaluates top k for: 
+        - Precision@k
+        - Recall@k
+        - Average Relevant Similarity
+        - Average Overall Similarity
+        - DCG@k
+        - nDCG@k
+
+    Parameters:
+    ----------
+    - k (int): The number of items to be retrieved
+
+    Returns:
+    -------
+    - A DF of all computed metrics at each anchor (chunk size) for k
     """
-    print(k)
+
+    #Load saved QA Pairs with relevance determinations
     metrics = dict()
-    with open("evaluation/qa_pairs_relevance.json", "r", encoding="utf-8") as f:
+    with open(QA_RELEVANCE_PATH, "r", encoding="utf-8") as f:
         qa_pairs = json.load(f)
 
+        #Iterate over each anchor (chunk size) and associated pairs (QA pairs)
         for anchor, pairs in qa_pairs.items():
             metrics[anchor]= {
                 "dcg@k": list(),
@@ -93,20 +178,22 @@ def evaluate_top_k(k: int=3):
                 "relevant_similarity": list(),
                 "overall_similarity": list()
             }
+            #Load faiss indexes saved in build_indexes()
             faiss_functional = FAISSFunctional()
             faiss_functional.load(f"evaluation/eval_{str(anchor)}.faiss")
-            
-            for pair in pairs:    
+            #Iterate over all QA pairs for anchor, querying each question and evaluating the retrieved chunks' relevance against the relevant chunks determined by Gemini
+            for pair in pairs:                    
                 query = embedding_model.encode([pair["question"]], convert_to_numpy=True)
                 D, I = faiss_functional.query(query, k)
-                tp = 0
                 total_relevant = len(pair["relevant_chunks"])
+                tp = 0
+                #Iterate over retrieved chunks and compare to relevant chunks
                 for sim, i in zip(D[0], I[0]):
                     doc_id, chunk_id = extract_doc_id_chunk_idx(i)
                     if doc_id == pair["doc_id"] and chunk_id in pair["relevant_chunks"]:
                         tp+=1
                         metrics[anchor]["relevant_similarity"].append(sim)
-                
+                #Append metrics to dict that will be used to generate the final DF
                 metrics[anchor]["precision@k"].append(precision_k(tp, k))
                 metrics[anchor]["recall@k"].append(recall_k(tp, total_relevant))
                 metrics[anchor]["overall_similarity"].append(D[0])
@@ -116,6 +203,7 @@ def evaluate_top_k(k: int=3):
                 metrics[anchor]["dcg@k"].append(dcg)
                 metrics[anchor]["ndcg@k"].append(ndcg)
             metrics[anchor]["num_chunks"] = len(faiss_functional)
+        
         df_dict = {
             "chunk_size": list(),
             "k": list(),
@@ -127,6 +215,8 @@ def evaluate_top_k(k: int=3):
             "relevant_similarity": list(),
             "overall_similarity": list()
         }
+
+        #Generate final DF of metrics for each chunk size at the given k
         for anchor, metrics in metrics.items():
             df_dict["chunk_size"].append(anchor)
             df_dict["k"].append(k)
@@ -137,22 +227,5 @@ def evaluate_top_k(k: int=3):
             df_dict["recall@k"].append(np.mean(metrics["recall@k"]))
             df_dict["relevant_similarity"].append(np.mean(metrics["relevant_similarity"]))
             df_dict["overall_similarity"].append(np.mean(metrics["overall_similarity"]))
+
         return pd.DataFrame(df_dict)
-
-df_3 = evaluate_top_k(3)
-print(df_3)
-df_5 = evaluate_top_k(5)
-print(df_5)
-df_10 = evaluate_top_k(10)
-print(df_10)
-
-df = pd.concat([df_3, df_5, df_10])
-print(df)
-df.to_csv("evaluation/custom_eval.csv")
-
-
-
-
-
-
-
