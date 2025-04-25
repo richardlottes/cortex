@@ -6,9 +6,9 @@ from typing import Callable, List, Dict
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from configs.constants import ASSETS_PATH, CORPUS_PATH
-from configs.llm import QA_GENERATION_PROMPT, DEDUP_QA_GENERATION_PROMPT
+from configs.prompts import QA_GENERATION_PROMPT, DEDUP_QA_GENERATION_PROMPT
 
-from utils.processing import safe_parse_json
+from core.processing import safe_parse_json
 
 
 def build_corpus():

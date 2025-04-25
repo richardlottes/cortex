@@ -3,7 +3,7 @@ import uuid
 import streamlit as st
 import pandas as pd
 
-from utils.streamlit import interactive_line_chart
+from core.streamlit import interactive_line_chart
 
 #Initialize session ID and storage names inline; can't do this in a function as functions run after widget rehydration
 if "session_id" not in st.session_state:

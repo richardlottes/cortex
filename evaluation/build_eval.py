@@ -6,7 +6,7 @@ import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from utils.processing import  ask_openai, ask_anthropic
+from core.processing import  ask_openai, ask_anthropic
 
 from evaluation.corpus_qa_pairs import build_corpus, build_qa_pairs, build_qa_pairs_dedup
 from evaluation.relevance import generate_relevance_scores

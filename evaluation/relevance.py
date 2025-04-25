@@ -9,16 +9,16 @@ import google.generativeai as genai
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from configs.llm import load_splitter
+from configs.prompts import RELEVANCE_DETERMINATION_PROMPT
 from configs.constants import (
     GEMINI_MODEL_NAME, 
-    RELEVANCE_DETERMINATION_PROMPT, 
     CORPUS_PATH, 
     QA_PAIRS_PATH, 
     QA_RELEVANCE_PATH,
     ANCHORS
 )
 
-from utils.processing import chunk_text
+from core.processing import chunk_text
 
 
 load_dotenv()
