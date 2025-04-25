@@ -1,4 +1,5 @@
 import os
+import json
 import pickle
 import re
 import uuid
@@ -14,14 +15,14 @@ from llama_index.core import SimpleDirectoryReader
 from llama_index.core.schema import Document
 
 from utils.functionals import FAISSFunctional, SQLiteFunctional
-from configs.llm import load_chunker, get_openai_client, get_mistral_client, get_anthropic_client
+from configs.llm import get_openai_client, get_mistral_client, get_anthropic_client, load_splitter
 from configs.enums import LLM
 
 
 openai_client = get_openai_client()
 anthropic_client = get_anthropic_client()
 mistral_client = get_mistral_client()
-chunker = load_chunker()
+splitter = load_splitter()
 
 ###########################
 ###PDF (OCR)###
@@ -216,14 +217,14 @@ def repunctuate(text: str, fixed_chunk: bool=False, token_lim: int=5000, char_pe
     return "".join(out)
 
 
-def chunk_text(text: str, chunker: SentenceSplitter=chunker) -> str:
+def chunk_text(text: str, splitter: SentenceSplitter=splitter) -> str:
     """
     Chunks raw text using the provided SentenceSplitter.
 
     Parameters:
     ----------
     - text (str): The text to be chunked.
-    - chunker (SentenceSplitter): A sentence-based chunking object used to split documents into chunks. Defaults to the global `chunker`.
+    - splitter (SentenceSplitter): A sentence-based chunking object used to split documents into chunks. Defaults to the global `splitter`.
 
     Returns:
     -------
@@ -231,20 +232,20 @@ def chunk_text(text: str, chunker: SentenceSplitter=chunker) -> str:
     """
 
     document = Document(text=text)
-    nodes = chunker.get_nodes_from_documents([document])
+    nodes = splitter.get_nodes_from_documents([document])
     text = [node.text for node in nodes]
 
     return text
 
 
-def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chunker) -> List[str]:
+def chunk_docs_sentence_splitter(files: List[str], splitter: SentenceSplitter=splitter) -> List[str]:
     """
      Reads text from the given files and splits it into chunks using the provided SentenceSplitter.
 
     Parameters:
     ----------
     - files (List[str]): A list of file paths to read and chunk.
-    - chunker (SentenceSplitter): A sentence-based chunking object used to split documents into chunks. Defaults to the global `chunker`.
+    - splitter (SentenceSplitter): A sentence-based chunking object used to split documents into chunks. Defaults to the global `splitter`.
 
     Returns:
     -------
@@ -252,7 +253,7 @@ def chunk_docs_sentence_splitter(files: List[str], chunker: SentenceSplitter=chu
     """
 
     documents = SimpleDirectoryReader(input_files=files).load_data()
-    nodes = chunker.get_nodes_from_documents(documents)
+    nodes = splitter.get_nodes_from_documents(documents)
     text = [node.text for node in nodes]
 
     return text
@@ -453,7 +454,55 @@ class DocumentManager:
         title = create_title(text)
         self._process_document(title, text, "text")
 
+            
+###LLM PROCESSING###
+def safe_parse_json(text):
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        print(f"Failed to parse JSON. Model output: {text}")
+        return []
+
+
 ###LLM CALLS###
+def ask_openai(messages: List[Dict], model="gpt-4o-mini"):
+    """
+
+    """
+    
+    try:
+        response = openai_client.responses.create(
+            model=model,
+            input = messages
+        )
+        return response.output[0].content[0].text
+    except Exception as e:
+        print(e)
+        raise
+
+
+def ask_anthropic(messages: List[Dict], model="claude-3-haiku-20240307"):
+    """
+    
+    """
+
+    try:
+        response = anthropic_client.messages.create(
+            model=model,
+            max_tokens=1024,
+            messages=messages
+        )
+        return response.content[0].text
+    except Exception as e:
+        print(e)
+        raise
+
+def ask_gemini(message, model="gemini-2.5-flash-preview-04-17"):
+    response = google_client.models.generate_content(
+        model=model,
+        contents=[message]
+    )
+
 def stream_openai(messages: List[Dict], model="gpt-4o-mini"):
     """
 

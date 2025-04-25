@@ -1,0 +1,86 @@
+Basic Color Theory
+Color theory encompasses a multitude of definitions, concepts and design applications - enough to fill several encyclopedias. However, there are three basic categories of color theory that are logical and useful : The color wheel, color harmony, and the context of how colors are used.
+
+Color theories create a logical structure for color. For example, if we have an assortment of fruits and vegetables, we can organize them by color and place them on a circle that shows the colors in relation to each other.
+
+fruit organized by color
+
+The Color Wheel
+A color circle, based on red, yellow and blue, is traditional in the field of art. Sir Isaac Newton developed the first circular diagram of colors in 1666. Since then, scientists and artists have studied and designed numerous variations of this concept. Differences of opinion about the validity of one format over another continue to provoke debate. In reality, any color circle or color wheel which presents a logically arranged sequence of pure hues has merit.
+
+Three color wheels - Harris, Today, Goethe 
+
+
+There are also definitions (or categories) of colors based on the color wheel. We begin with a 3-part color wheel.
+
+ 
+
+Primary Secondary Tertiary Colors
+
+Primary Colors: Red, yellow and blue
+In traditional color theory (used in paint and pigments), primary colors are the 3 pigment colors that cannot be mixed or formed by any combination of other colors. All other colors are derived from these 3 hues. 
+
+Secondary Colors: Green, orange and purple
+These are the colors formed by mixing the primary colors.
+
+Tertiary Colors: Yellow-orange, red-orange, red-purple, blue-purple, blue-green & yellow-green
+These are the colors formed by mixing a primary and a secondary color. That's why the hue is a two word name, such as blue-green, red-violet, and yellow-orange.
+
+ Color Harmony
+Harmony can be defined as a pleasing arrangement of parts, whether it be music, poetry, color, or even an ice cream sundae.
+
+In visual experiences, harmony is something that is pleasing to the eye. It engages the viewer and it creates an inner sense of order, a balance in the visual experience. When something is not harmonious, it's either boring or chaotic. At one extreme is a visual experience that is so bland that the viewer is not engaged. The human brain will reject under-stimulating information. At the other extreme is a visual experience that is so overdone, so chaotic that the viewer can't stand to look at it. The human brain rejects what it cannot organize, what it cannot understand. The visual task requires that we present a logical structure. Color harmony delivers visual interest and a sense of order.
+
+In summary, extreme unity leads to under-stimulation, extreme complexity leads to over-stimulation. Harmony is a dynamic equilibrium.
+
+Some Formulas for Color Harmony
+There are many theories for harmony. The following illustrations and descriptions present some basic formulas.
+
+
+1. A color scheme based on analogous colors
+
+Example of an anaologous color harmony  
+
+Analogous colors are any three colors which are side by side on a 12-part color wheel, such as yellow-green, yellow, and yellow-orange. Usually one of the three colors predominates.
+ 
+
+2. A color scheme based on complementary colors
+
+Example of a complementary color harmony 
+ 
+
+Complementary colors are any two colors which are directly opposite each other, such as red and green and red-purple and yellow-green. In the illustration above, there are several variations of yellow-green in the leaves and several variations of red-purple in the orchid. These opposing colors create maximum contrast and maximum stability.
+ 
+
+3. A color scheme based on nature
+
+ color harmony in nature
+
+Nature provides a perfect departure point for color harmony. In the illustration above, red yellow and green create a harmonious design, regardless of whether this combination fits into a technical formula for color harmony.
+
+
+Dynamic recipes for color harmony
+An e-Course from Jill Morton, Color Matters author & consultant.
+
+Color Context
+How color behaves in relation to other colors and shapes is a complex area of color theory. Compare the contrast effects of different color backgrounds for the same red square.
+
+ 
+
+
+©Color Voodoo Publications
+
+Red appears more brilliant against a black background and somewhat duller against the white background. In contrast with orange, the red appears lifeless; in contrast with blue-green, it exhibits brilliance. Notice that the red square appears larger on black than on other background colors.
+
+
+Different readings of the same color
+
+
+©Color Voodoo Publications
+
+If your computer has sufficient color stability and gamma correction (link to Is Your Computer Color Blind?) you will see that the small purple rectangle on the left appears to have a red-purple tinge when compared to the small purple rectangle on the right. They are both the same color as seen in the illustration below. This demonstrates how three colors can be perceived as four colors.
+
+
+
+
+Observing the effects colors have on each other is the starting point for understanding the relativity of color. The relationship of values, saturations and the warmth or coolness of respective hues can cause noticeable differences in our perception of color.

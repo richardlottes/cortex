@@ -1,0 +1,488 @@
+[
+  {
+    "question": "What key advantage does the Transformer's architecture offer over recurrent and convolutional models for sequence transduction tasks?",
+    "answer": "The Transformer's architecture enables significantly more parallelization during training and inference because it relies solely on attention mechanisms without recurrence or convolution, resulting in faster training times, superior quality, and the ability to model long-range dependencies with constant path lengths between arbitrary positions in the input and output sequences.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 0
+  },
+  {
+    "question": "How does the Transformer model incorporate positional information given its lack of recurrence and convolution, and what is the proposed benefit of its chosen method?",
+    "answer": "The Transformer injects positional information by adding positional encodings to input embeddings at the bottoms of both the encoder and decoder stacks. These encodings use sine and cosine functions of different frequencies, which allow the model to easily learn to attend by relative positions and potentially extrapolate to sequence lengths beyond those seen in training.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 0
+  },
+  {
+    "question": "What experimental results demonstrate the effectiveness of the Transformer model on machine translation tasks compared to previous state-of-the-art methods?",
+    "answer": "On the WMT 2014 English-to-German translation task, the 'big' Transformer model achieved a BLEU score of 28.4, outperforming all previously reported models (including ensembles) by over 2 BLEU points. On English-to-French, it achieved a BLEU of 41.8, also surpassing prior single-model state-of-the-art results, all while requiring substantially less training cost and time.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 0
+  },
+  {
+    "question": "According to the coffee experts consulted in the passage, what two main factors determine a brew\u2019s flavor before the brewing method is even considered?",
+    "answer": "The two main factors are where and how the beans are grown (the terroir) and how darkly or lightly they are roasted.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 1
+  },
+  {
+    "question": "Why did the author decide to use Starbucks Pike Place medium roast beans and a burr grinder for the coffee method test, and what was the significance of using a burr grinder according to the experts?",
+    "answer": "The author used Starbucks Pike Place medium roast beans to keep the test even-handed with a high-quality but widely available option, and a burr grinder to ensure an even-sized grind. The experts agreed that a burr grinder is better than a blade grinder because it crushes the beans consistently, resulting in better extraction.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 1
+  },
+  {
+    "question": "How did the AeroPress coffee brewing method compare to the others in terms of flavor, process time, and overall assessment by the author?",
+    "answer": "The AeroPress was rated highest in flavor (10/10), producing a dark, smooth, rich cup with very little bitterness. It was also the fastest method (2 minutes), easy to clean, and yielded a superb cup despite requiring specialty paper filters. The author considered it even better than the pourover and the Moka pot.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 1
+  },
+  {
+    "question": "Who developed the first circular diagram of colors and in what year?",
+    "answer": "Sir Isaac Newton developed the first circular diagram of colors in 1666.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 2
+  },
+  {
+    "question": "What distinguishes tertiary colors from primary and secondary colors in traditional color theory?",
+    "answer": "Tertiary colors are formed by mixing a primary and a secondary color, resulting in hues with two-word names like yellow-green or red-violet, whereas primary colors cannot be made by mixing other colors and secondary colors are made by mixing primary colors.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 2
+  },
+  {
+    "question": "How does the context of surrounding colors affect the perception of a red square's appearance?",
+    "answer": "The red square appears more brilliant on a black background, duller on a white background, lifeless next to orange, and more brilliant alongside blue-green; additionally, it seems larger on black than on other background colors, demonstrating how adjacent colors alter our perception of the same color.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 2
+  },
+  {
+    "question": "What was the primary reason for the pope's temporal power throughout history, according to the passage?",
+    "answer": "The primary reason for the pope's temporal power was to guarantee the independence of the papacy, enabling the pope to run the Church as subject only to God and free from obligations to secular rulers.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 3
+  },
+  {
+    "question": "How did the legalisation of Christianity under Constantine affect the role and influence of the popes in Rome?",
+    "answer": "The legalisation of Christianity under Constantine elevated the popes from relative obscurity to great worldly status, as they were given palaces, received privileges across the empire, and their religious role was memorialised in monumental buildings, making their position highly desirable.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 3
+  },
+  {
+    "question": "What was the impact of the Lateran Accords of 1929 on the status of the papacy, and how did it differ from earlier territorial holdings?",
+    "answer": "The Lateran Accords of 1929 restored the pope's sovereign status by granting Vatican City as an independent state, providing practical and visible independence, but it was only a minuscule territory compared to earlier extensive Papal States, thereby freeing the papacy from burdensome secular rule and enhancing its moral authority.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 3
+  },
+  {
+    "question": "What types of ecological impacts did stakeholders identify as dominant themes resulting from the construction and operation of Kenya's Standard Gauge Railway (SGR)?",
+    "answer": "Stakeholders identified ecosystem degradation, ecosystem fragmentation, and ecosystem destruction as the three dominant ecological impacts resulting from the SGR, with ecosystem degradation being the most commonly cited, followed by fragmentation and then destruction.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 4
+  },
+  {
+    "question": "How has the SGR construction specifically affected natural hydrological processes and led to problems such as flooding and erosion along its corridor?",
+    "answer": "The SGR's construction, particularly the use of embankments to elevate the railway, has rerouted or concentrated surface runoff to underpasses, increasing the volume and speed of water flow. This has resulted in flooding, soil erosion, gulley formation, sedimentation of streams and water bodies, and alteration of natural drainage patterns, leading to blocked or dried up rivers and flooding of adjacent low-lying areas.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 4
+  },
+  {
+    "question": "What challenges related to invasive plant species are associated with the SGR, and what factors complicate attributing these invasions directly to the railway\u2019s construction and operation?",
+    "answer": "Invasive plant species such as Opuntia stricta and Prosopis juliflora have been observed spreading rapidly along the SGR corridor, particularly in national parks and areas disturbed by construction activities like borrow pits and truck tracks. However, attributing these invasions directly to the SGR is complicated by a lack of clear timelines, insufficient monitoring, and the coexistence of other disturbance factors, making direct causal relationships difficult to establish based on available stakeholder observations.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 4
+  },
+  {
+    "question": "How did fansubbing impact both translation professionals and anime production companies?",
+    "answer": "Fansubbing, the practice of fans adding unofficial subtitles to Japanese anime and distributing them online for free, posed a threat to professional translators and subtitlers by providing unpaid alternatives. It also threatened the profits of production companies and original artists, as freely available subtitled content reduced the incentive for media purchases and legal distribution.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 5
+  },
+  {
+    "question": "What changes did Japanese anime undergo when introduced to the American market, and why?",
+    "answer": "When anime was introduced to America, it underwent significant censorship, such as alterations to character gender, display of violence, mature content, and translated dialogue. These changes were made because anime was initially targeted at children in the U.S., and due to cultural differences where certain aspects of Japanese storylines, like homoeroticism, were not viewed favorably in the West.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 5
+  },
+  {
+    "question": "What role does the Internet currently play in the global anime industry, and how does it present both opportunities and risks?",
+    "answer": "The Internet enables global access to uncensored anime, contributing to its popularity and helping overcome obstacles like censorship. However, it also facilitates piracy and unauthorized distribution, which threaten profits, deter investors, and can hinder the legal expansion and marketing of anime, potentially leading to industry decline.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 5
+  },
+  {
+    "question": "How does the Vision Transformer (ViT) model handle image data differently compared to traditional convolutional neural networks (CNNs)?",
+    "answer": "Unlike CNNs, which use convolutional layers to process images and exploit local spatial relationships, the Vision Transformer splits images into fixed-size patches, linearly embeds each patch, and treats these embeddings as a sequence of tokens (similar to words in NLP). This sequence is then fed directly into a standard Transformer encoder, allowing global self-attention across the entire image and requiring the model to learn almost all spatial relationships from the data itself.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 6
+  },
+  {
+    "question": "What are the key findings regarding the impact of dataset size on the performance of ViT compared to ResNet models?",
+    "answer": "The study found that while ViT underperforms ResNets when pre-trained on smaller datasets like ImageNet, it significantly outperforms them when pre-trained on much larger datasets such as ImageNet-21k or JFT-300M. The lack of inductive biases in ViT makes it more reliant on large datasets to learn effective representations, whereas ResNets, due to their built-in spatial biases, generalize better with less data. However, as dataset size increases, ViT's scalable architecture allows it to surpass ResNet performance and use computational resources more efficiently.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 6
+  },
+  {
+    "question": "What role do position embeddings play in the Vision Transformer architecture, and what did the ablation study reveal about different positional encoding strategies?",
+    "answer": "Position embeddings in ViT are added to patch embeddings to retain spatial information about where each patch belongs in the original image, as transformers are inherently order-agnostic. An ablation study revealed that including any form of positional embedding (1D, 2D, or relative) yields much better performance than providing no positional information. However, differences between encoding methods (1D vs 2D vs relative positioning) were found to have minimal impact on final accuracy, suggesting the model can effectively learn spatial relationships from basic positional cues.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 6
+  },
+  {
+    "question": "What are some distinctive features that set Art Week Riyadh apart from a conventional art fair, according to its organizers?",
+    "answer": "According to its organizers, Art Week Riyadh was set apart from a conventional art fair by its non-commercial, curated nature, the selection of 'museum-grade' works, installations and large-scale presentations placed between booths, and the fact that dealers did not pay for space, production, or shipping. Furthermore, curators, rather than dealers, selected the artists to ensure thematic cohesion, moving the event closer to an institutional show than a standard commercial art fair.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 7
+  },
+  {
+    "question": "How do Saudi Arabia\u2019s import regulations affect the sale and movement of artworks during Art Week Riyadh?",
+    "answer": "Saudi Arabia's import regulations required artworks to be imported on a temporary permit through the Ministry of Culture. Any work sold by non-Saudi galleries had to be exported back home and re-imported. The country does not offer art-specific import exemptions, so works are subject to a 5% duty on fine art and a 15% VAT, though GCC galleries could benefit from a reduced VAT of 5% under certain conditions. These legal hurdles influenced AWR's stance as a 'non-commercial' event.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 7
+  },
+  {
+    "question": "In what ways did Art Week Riyadh impact the local collector demographic, particularly among younger Saudis?",
+    "answer": "Art Week Riyadh contributed to a sharp uptick in young Saudi collectors, partly due to the Ministry of Culture\u2019s efforts and the inclusive, hybrid model of the event. The environment encouraged less experienced collectors to interact, learn from their peers, and consider newly available contemporary works. This contrasted with older collectors, who had already established their collecting preferences and tended to be more private in their engagement compared to global norms.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 7
+  },
+  {
+    "question": "How do money market accounts differ from regular savings accounts in terms of interest rates and withdrawal restrictions?",
+    "answer": "Money market accounts typically offer higher interest rates than regular savings accounts but come with higher minimum balance requirements and federal limits on the number of withdrawals or checks that can be written. If the withdrawal limits are exceeded, the bank may convert the account to a checking account.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 8
+  },
+  {
+    "question": "What are some risks or limitations associated with investing in money market instruments, despite their reputation for safety?",
+    "answer": "While money market instruments are generally low-risk and highly liquid, some are not FDIC insured, fees can erode modest returns, and rare events can lead to a loss of principal, such as when a money market fund 'breaks the buck.' Additionally, returns on these investments are often low and may not keep pace with inflation.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 8
+  },
+  {
+    "question": "What is the primary function of the money market in the global financial system, and which parties are its main participants?",
+    "answer": "The primary function of the money market is to facilitate the lending and borrowing of short-term funds, keeping the financial system's cash flows steady. Main participants include banks, corporations, governments, mutual funds, and individual investors who use various instruments like Treasury bills, commercial paper, and money market funds.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 8
+  },
+  {
+    "question": "What is the purpose of inserting random 10-second micro-rest intervals during learning sessions according to the protocol?",
+    "answer": "Random micro-rest intervals allow neurons in the hippocampus and cortex to replay patterns of neural activity involved in learning at a much faster rate, effectively multiplying neural repetitions and enhancing memory consolidation.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 9
+  },
+  {
+    "question": "Why does the protocol recommend making rewards for learning random and intermittent rather than predictable?",
+    "answer": "Random and intermittent rewards maintain motivation and engagement over time, as predictable rewards lose their motivational impact quickly due to neural adaptation in reward circuits.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 9
+  },
+  {
+    "question": "How does the protocol view the role of sleep and NSDR (Non-Sleep Deep Rest) in the learning process?",
+    "answer": "The protocol emphasizes that actual neural rewiring and consolidation of learning occur primarily during sleep and NSDR, making them essential follow-ups to active learning sessions for effective long-term retention.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 9
+  },
+  {
+    "question": "How does the destruction of the physical artwork, in the context of NFTs, affect the financial value and 'aura' of the piece according to the passage?",
+    "answer": "The destruction of the physical artwork transfers its financial value and 'aura' to the NFT, making the NFT the unique bearer of value. The passage argues that the NFT assumes the artwork\u2019s aura and monetary worth, since the digital representation can be authenticated and owned uniquely, even after the destruction of the physical piece.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 10
+  },
+  {
+    "question": "What distinction does the passage make between Robert Rauschenberg's 'Erased de Kooning Drawing' and recent NFT-related destructions?",
+    "answer": "The passage distinguishes Rauschenberg\u2019s act as an attempt to gain artistic legitimacy with the original artist\u2019s permission and argues that it remained within the canon of high art. In contrast, recent NFT-related destructions by owners are seen as financially motivated challenges to the original\u2019s existence, reflecting a 'moral gulf' between creating art and destroying it for value transfer.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 10
+  },
+  {
+    "question": "According to the passage, in what way do NFTs embody both financial and aesthetic abstractions, and what is the broader implication of this dual embodiment?",
+    "answer": "NFTs embody both financial value and the aesthetic aura, uniting them into a single symbolic representation that can be traded or owned. The broader implication is that this duality collapses the distinction between art and money, leading to a 'hostile takeover' of aesthetics by economics as the symbolic nature of value becomes central in both spheres.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 10
+  },
+  {
+    "question": "According to the review, what evidence does Gladwell provide to support the idea that extensive experience is critical to achieving world-class success?",
+    "answer": "Gladwell references a study by K. Anders Ericsson at Berlin\u2019s Academy of Music which found that expert musicians had about 10,000 hours of practice, compared to 4,000 to 6,000 for merely good musicians, and he supports this conclusion with additional examples like Bill Gates and The Beatles, both of whom had the opportunity and environment to achieve the critical 10,000-hour mark.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 11
+  },
+  {
+    "question": "How does Gladwell use the concept of power-distance to explain the impact of culture on professional success in the aviation industry?",
+    "answer": "Gladwell discusses how high power-distance cultures, which accept more hierarchical relationships, contributed to airline accidents because crew members were uncomfortable expressing concerns to pilots; he uses the example of Korean Airlines improving its safety record by retraining crews to adopt a Western, low power-distance environment, where more egalitarian communication is encouraged.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 11
+  },
+  {
+    "question": "What is one major criticism the reviewer has about Gladwell's argument regarding the influence of culture on success?",
+    "answer": "The reviewer criticizes Gladwell for providing insufficient evidence and relying on anecdotal observations when discussing culture's influence on success, particularly in the second section of the book, and notes that Gladwell offers vague assertions and extreme extrapolations rather than robust research or generalizable studies.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 11
+  },
+  {
+    "question": "What are some of the main advantages of pursuing a PhD as outlined in the passage, and how do they compare to working at a company?",
+    "answer": "The passage outlines advantages such as greater freedom in pursuing topics of personal interest, ownership over one\u2019s research, exclusivity and status associated with earning a PhD, increased personal freedom in scheduling, maximizing future employment and lifestyle choices, opportunities for personal growth and expertise development, and access to a high density of bright peers. In contrast, working at a company often involves blending in, less individual recognition, more structured environments, and potentially less flexibility both in work and long-term career directions.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 12
+  },
+  {
+    "question": "Why is the student-adviser relationship described as a 'symbiosis', and what are some important factors to consider when choosing an adviser?",
+    "answer": "The relationship is called a 'symbiosis' because both student and adviser have their own goals, incentives, and constraints, and ideally each helps the other in achieving their objectives. Important factors in choosing an adviser include understanding their management style, their position along various axes (hands-on vs. hands-off, frequency of meetings, their research focus, supportiveness, communication style), their career incentives (such as tenure status), and especially whether there is a good intellectual and personal fit. Collecting references from their current and former students is also highly recommended to understand what working with them is like.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 12
+  },
+  {
+    "question": "According to the passage, what distinguishes an important research problem from merely a hard or popular one, and what characteristics should one look for when choosing a PhD research topic?",
+    "answer": "An important research problem is not just defined by its difficulty or popularity, but by the presence of a reasonable 'attack' strategy\u2014meaning it\u2019s feasible to make progress given current knowledge and resources. Characteristics to look for in a research topic include the potential for additional significant work (fertility), alignment with adviser\u2019s interests, being ambitious but actionable, the likelihood of making an original and clear mark in the field ('becoming the person who did X'), and the development of skills that will be valuable in the future. The passage warns against focusing on purely incremental work or problems that lack a plausible plan of attack.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 12
+  },
+  {
+    "question": "Why might summarizing as a study technique be less effective, according to the passage?",
+    "answer": "Summarizing might be less effective because it often lacks a feedback mechanism to ensure that key details have been gathered, making it hard to judge the accuracy and thoroughness of the summary.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 13
+  },
+  {
+    "question": "How does the author describe the effectiveness and limitations of the keyword mnemonic technique?",
+    "answer": "The keyword mnemonic technique was labeled 'ineffective' in the research, but the author suggests that it is more narrowly useful, possibly effective in limited contexts rather than as a general strategy for all types of learning material.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 13
+  },
+  {
+    "question": "What trade-off does the author identify between spacing and focus in learning, and what benefit does each provide?",
+    "answer": "The trade-off identified is that spacing improves long-term recall, while focus helps in progressing and accomplishing work. Balancing both is seen as important since spacing alone helps with memory retention, but without sufficient focus, tasks may not get completed efficiently.",
+    "model": "gpt-4.1-2025-04-14",
+    "doc_id": 13
+  },
+  {
+    "question": "What specific innovation in the Transformer architecture enables it to better model dependencies between arbitrary positions in a sequence?",
+    "answer": "The Transformer uses multi-head self-attention mechanisms that enable it to model dependencies between arbitrary positions with a constant number of operations, regardless of the distance between positions. This differs from recurrent or convolutional architectures that require more operations for longer distances, making it easier for the Transformer to learn long-range dependencies.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 0
+  },
+  {
+    "question": "How does the Transformer model handle the lack of sequential ordering in its inputs?",
+    "answer": "The Transformer handles the lack of sequential ordering by adding positional encodings to input embeddings at the bottoms of both encoder and decoder stacks. These encodings use sine and cosine functions of different frequencies, allowing the model to learn relative positions and potentially extrapolate to sequence lengths beyond those seen in training.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 0
+  },
+  {
+    "question": "What computational advantage does the Transformer's architecture provide over RNN models during training?",
+    "answer": "The Transformer allows for significantly more parallelization during training compared to RNNs because it removes sequential computation constraints. While RNNs require O(n) sequential operations for a sequence of length n, the Transformer requires only a constant number of sequential operations, enabling much faster training times on modern hardware like GPUs.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 0
+  },
+  {
+    "question": "What water temperature is recommended for the French Press method, and how long should the coffee steep?",
+    "answer": "For the French Press method, the article recommends using water that is just below boiling, around 175\u00b0F, and letting it steep for four minutes using a timer.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 1
+  },
+  {
+    "question": "What technique did the author learn to improve the Moka Pot brewing method that helps prevent bitterness?",
+    "answer": "The author learned to brew with the lid open, and as soon as coffee starts flowing out of the spout, to remove it from heat, close the lid, and wrap the base with a chilled towel or run it under cool water to stop the extraction process, which prevents the coffee from being too bitter.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 1
+  },
+  {
+    "question": "What was the author's main criteria for judging the best coffee brewing method in this test?",
+    "answer": "The author's main criteria was taste, specifically which method yielded a cup most similar to their platonic ideal: \"the rich, smooth, complex, just slightly bitter brew\" they found in Italy. Other factors like quantity, economy, and convenience were not considered in the evaluation.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 1
+  },
+  {
+    "question": "What are the three basic categories of color theory mentioned in the passage?",
+    "answer": "The three basic categories of color theory mentioned are the color wheel, color harmony, and the context of how colors are used.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 2
+  },
+  {
+    "question": "What are the three formulas for color harmony described in the passage?",
+    "answer": "The three formulas for color harmony described are: 1) A color scheme based on analogous colors, 2) A color scheme based on complementary colors, and 3) A color scheme based on nature.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 2
+  },
+  {
+    "question": "How does the passage define analogous colors in relation to the color wheel?",
+    "answer": "Analogous colors are defined as any three colors which are side by side on a 12-part color wheel, such as yellow-green, yellow, and yellow-orange, with usually one of the three colors predominating.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 2
+  },
+  {
+    "question": "What was the significance of the Lateran Accords of 1929 for papal sovereignty?",
+    "answer": "The Lateran Accords of 1929 reconciled the Italian state and the Catholic Church, with Benito Mussolini granting Pope Pius XI a small sovereign state of around 440,000 square meters. This restored the pope's sovereign status while providing practical and visible independence, allowing popes to exercise moral authority without the burdens of extensive territorial rule that had historically undermined their religious role.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 3
+  },
+  {
+    "question": "How did Pope Gregory II respond to Emperor Leo the Isaurian's ban on religious icons in 726?",
+    "answer": "Pope Gregory II refused to implement Emperor Leo the Isaurian's ban on religious icons, defying imperial authority. His successor, Gregory III, went further by using onyx columns (that had been presented by the emperor's exarch) to display icons instead. This defiance represented the popes' assertion of religious independence from Byzantine imperial control.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 3
+  },
+  {
+    "question": "What event in 1143 demonstrated Roman opposition to papal political authority?",
+    "answer": "In 1143, a revolution broke out in Rome when Pope Innocent II undermined a Roman plan to take the nearby town of Tivoli by cutting his own deal with the inhabitants. The Romans demanded that the pope be stripped of all political authority and revived the ancient senate on the Capitoline Hill. This forced Innocent II's successors to flee Rome for 45 years until Pope Clement III finally returned in 1188, having to accept the continued presence of the senate representing the Commune of Rome.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 3
+  },
+  {
+    "question": "How did the SGR construction affect natural water flow and drainage patterns according to the study?",
+    "answer": "The SGR construction, particularly through the use of embankments, rerouted or concentrated surface runoff to underpasses, which increased water volumes and flow speed. This alteration of natural hydrology resulted in flooding, soil erosion, gulley formation, sedimentation of streams, and channel modification. Specific examples included rivers like Empakashe and Mbagathi becoming blocked or dried up due to siltation, and flooding in low-lying areas such as Kibarani, Kiunduani, Ngwiw'a, Mutantheeu, Emali town, and Kima in Makueni County.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 4
+  },
+  {
+    "question": "What were the three main ecological impact themes identified by stakeholders regarding Kenya's Standard Gauge Railway, and which was most prevalent?",
+    "answer": "Stakeholders identified three main ecological impact themes: ecosystem degradation, ecosystem fragmentation, and ecosystem destruction. Ecosystem degradation emerged as the most prevalent concern, followed by ecosystem fragmentation, while ecosystem destruction was the least dominant issue. Ecosystem degradation included subcategories of soil/water/air contamination, erosion/sedimentation/flooding, and the spread of invasive species.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 4
+  },
+  {
+    "question": "How has the construction of the SGR affected wildlife behavior, particularly elephants in the Tsavo area?",
+    "answer": "According to stakeholder observations, elephants in the Tsavo area have shown signs of behavioral modification in response to SGR-related activities. Specifically, some elephants have reportedly become more aggressive as they interpret traffic noise as an indicator of human presence, causing them to be more defensive. These behavioral adaptations are consistent with other wildlife species that shift their home ranges or alter movement patterns in response to infrastructure development.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 4
+  },
+  {
+    "question": "How did the anime 'Tetsuwan Atomu' introduce challenges for the anime industry when it was first brought to America?",
+    "answer": "When 'Tetsuwan Atomu' was brought to NBC in 1963, it was renamed to 'Astro Boy' and underwent significant censorship to make it suitable for American children, establishing a precedent where censorship became the norm for anime on American television due to cultural differences and targeting younger audiences.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 5
+  },
+  {
+    "question": "What solution has emerged to address the profitability challenges in the anime industry caused by internet piracy?",
+    "answer": "Online subscription services like Crunchyroll, described as 'the netflix of anime,' have emerged as a potential solution where consumers pay a small monthly fee to access a variety of anime and manga legally, creating a 'cyber pay-to-play community' that gives stakeholders financial incentive to remain involved in the industry.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 5
+  },
+  {
+    "question": "What is the global reach of Japanese animation according to the Association of Japanese Animations?",
+    "answer": "According to the Association of Japanese Animations, 60 member anime production companies provide products to 112 countries, reaching approximately 87.2 percent of the world's population.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 5
+  },
+  {
+    "question": "What specific architecture differences allow Vision Transformer to scale better than ResNets with larger datasets?",
+    "answer": "Vision Transformer scales better than ResNets with larger datasets because it lacks the local spatial inductive biases of CNNs, using instead global self-attention where each patch can attend to every other patch from the earliest layers. This architecture allows ViT to learn almost all spatial relationships directly from data rather than having them built-in. While this makes ViT perform worse on smaller datasets where inductive biases are beneficial, it enables better scaling with larger datasets (such as JFT-300M) where the model can learn optimal patterns directly from the data itself, ultimately yielding more efficient use of computational resources and higher performance ceiling as dataset size increases.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 6
+  },
+  {
+    "question": "How do hybrid models compare to pure Vision Transformers at different computational budgets?",
+    "answer": "The controlled scaling study shows that hybrid models (combining a ResNet backbone with ViT) slightly outperform pure Vision Transformers at smaller computational budgets, providing better performance/compute trade-offs. However, this advantage disappears for larger models where pure ViTs match or exceed hybrid performance. This finding is somewhat surprising as one might expect the convolutional local feature processing to benefit ViT at all scales. The results suggest that while the ResNet-derived inductive biases offer advantages for smaller models, larger Vision Transformers can learn the necessary patterns directly from data, making the additional convolutional processing unnecessary at scale.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 6
+  },
+  {
+    "question": "What does the analysis of attention distance reveal about how Vision Transformer processes images compared to CNNs?",
+    "answer": "The analysis of attention distance (analogous to receptive field size in CNNs) reveals that Vision Transformer processes images through a combination of global and local attention patterns that evolve with network depth. In lower layers, attention is highly variable across heads - some heads attend globally across the entire image while others focus narrowly on small regions near the query location. This contrasts with CNNs where early layers are restricted to small receptive fields. As network depth increases, attention distance increases for all heads, with most heads in the second half of the network attending widely across tokens. This suggests ViT develops a hierarchical processing pattern organically during training, with some heads specializing in local feature extraction similar to early CNN layers, while other heads leverage the Transformer's ability to immediately access global information - a capability CNNs only achieve in deep layers.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 6
+  },
+  {
+    "question": "What was the title and curatorial team of the main exhibition at Art Week Riyadh?",
+    "answer": "The main exhibition was titled 'At The Edge' and was organized by AWR's artistic director Vittoria Matarrese with associate curators Basma Harasani and Victoria Gandit Lelandais.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 7
+  },
+  {
+    "question": "What specific financial advantages did galleries receive by participating in Art Week Riyadh compared to traditional art fairs?",
+    "answer": "Galleries participating in Art Week Riyadh didn't pay for space, production, or shipping costs - they only needed to cover their flights and hotels if they wanted to attend, which significantly reduced the financial risks typically associated with art fairs.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 7
+  },
+  {
+    "question": "What were some notable artwork highlights mentioned from the main exhibition at Art Week Riyadh?",
+    "answer": "Notable highlights included an Ayesha Sultana cityscape at Experimenter, Mohamed Bourouissa's installation of photos printed on compacted car body parts at Mennour, Mohammed Al Resayes canvases from 1985 at Hewar, and a quad of Miramar Al Nayyar paintings at Tabari Artspace described as having 'asemic, ribbon worm-like forms and otherworldly glow.'",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 7
+  },
+  {
+    "question": "What special circumstance affected money market funds during the 2008 financial crisis?",
+    "answer": "During the 2008 financial crisis, some money market funds 'broke the buck,' meaning their net asset value (NAV) fell below the baseline $1 per share. This rare event specifically occurred with a fund that held assets of the bankrupt Lehman Brothers, resulting in investors eventually receiving only 98 cents on the dollar.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 8
+  },
+  {
+    "question": "How do Eurodollars differ from other money market instruments?",
+    "answer": "Eurodollars are dollar-denominated deposits held in foreign banks (particularly in the Cayman Islands and Bahamas) that aren't subject to Federal Reserve regulations. They're attractive to money market funds, foreign banks, and large corporations because they pay slightly higher interest rates than U.S. government debt.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 8
+  },
+  {
+    "question": "What role do banker's acceptances play in international trade within the money market?",
+    "answer": "Banker's acceptances function as short-term loans guaranteed by banks that are extensively used in foreign trade. They operate similar to post-dated checks, serving as a guarantee that an importer who has ordered goods can pay for them. There's also a secondary market where banker's acceptances can be bought and sold at a discount.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 8
+  },
+  {
+    "question": "What breathing technique does the protocol suggest to increase alertness before learning?",
+    "answer": "The protocol suggests performing 25-30 deep breaths (inhaling through the nose and exhaling through the mouth), followed by exhaling completely and holding with empty lungs for 15-60 seconds, then inhaling once and holding until you feel the urge to breathe.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 9
+  },
+  {
+    "question": "What is the recommended maximum duration for intense learning sessions according to the Neuroplasticity Super-Protocol?",
+    "answer": "The protocol recommends limiting learning sessions to 90 minutes, as research shows this is about the longest period one can maintain intense focus and effort toward learning, with a maximum of about 270 minutes of intense learning bouts per day.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 9
+  },
+  {
+    "question": "How does the protocol suggest improving mental focus before starting a learning task?",
+    "answer": "The protocol suggests staring at a point on a wall, screen, or object for 30-60 seconds before starting, explaining that 'mental focus follows visual focus' and this effort engages 'top-down' attentional mechanisms involving acetylcholine release in the brain.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 9
+  },
+  {
+    "question": "How did the company Injective Protocol profit from their NFT transaction involving a Banksy print?",
+    "answer": "Injective Protocol bought a Banksy print for $95,000, sold an NFT of it for $380,000, and then publicly burned the original print on YouTube, making a profit of $285,000 while transferring the artwork's value to the digital token.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 10
+  },
+  {
+    "question": "What was the specific legal measure passed to prevent art owners from destroying valuable artworks, and when was it enacted?",
+    "answer": "The Visual Artists Rights Act of 1990 was passed by the federal government to protect works of 'recognized stature' from destruction by their owners, reflecting concerns about the rights of artwork preservation versus ownership rights.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 10
+  },
+  {
+    "question": "According to the authors, how has the evolution of money related to the current NFT phenomenon?",
+    "answer": "The authors argue that money has undergone a process of aestheticization, evolving from precious metals through bank notes to cryptocurrencies, revealing its symbolic nature and making it increasingly similar to artistic representation. This evolution culminates in NFTs, where financial value and aesthetic representation become functionally identical and interchangeable.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 10
+  },
+  {
+    "question": "What does the author identify as the key components in 'developing taste' for research problems?",
+    "answer": "The author describes 'taste' as a real skill that helps researchers evaluate potential problems. Key components include: finding 'fertile ground' where work can expand into additional papers, choosing topics that play to your adviser's interests and strengths, being ambitious while recognizing that 10x more important problems are often only 2-3x harder, ensuring you have a reasonable 'attack strategy' for solving the problem, aiming to become 'the person who did X' by owning part of an important area, and developing valuable skills that will benefit your future career. The author contrasts this with negative examples like incremental work that makes minor improvements to existing approaches.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 12
+  },
+  {
+    "question": "How does the author characterize the three stages of a PhD, and what metaphor is used to describe this progression?",
+    "answer": "The author describes three stages of a PhD using the metaphor of familiarity with research papers: in the first stage, you look at a related paper's reference section and haven't read most of the papers; in the second stage, you recognize all the papers; and in the third stage, you've 'shared a beer with all the first authors of all the papers.' This metaphor illustrates how PhD students progress from unfamiliarity with their field's literature to becoming active, connected members of the research community who personally know the key contributors.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 12
+  },
+  {
+    "question": "What advice does the author give about talk preparation and what common pitfalls should be avoided?",
+    "answer": "For talk preparation, the author advises focusing on exciting the audience about the problem, teaching them something, and entertaining them rather than just describing what you did. They recommend using lots of pictures, making talks actionable, giving live demos when possible, citing others generously, and practicing thoroughly. Common pitfalls to avoid include: crowding slides with text and complex diagrams, spending too much time on introductory material and rushing through results, creating a 'thin band between bored/confused' where the audience is bored during general overviews and confused during technical portions, running out of time for the most interesting content, and giving formulaic talks that follow predictable patterns. The author particularly dislikes outline slides for shorter presentations.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 12
+  },
+  {
+    "question": "What did the author find surprising about the research findings on learning methods?",
+    "answer": "The author was surprised by the finding that summarizing was deemed ineffective as a study technique, though they were not surprised about the ineffectiveness of highlighting.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 13
+  },
+  {
+    "question": "What are some opinions the author changed since writing 'Learn More, Study Less'?",
+    "answer": "The author changed several opinions including: acknowledging repetition isn't necessarily bad, recognizing speed reading is only narrowly useful, believing practice and active recall should be a larger part of learning strategy, finding spaced repetition software useful, advising against highlighting, and confirming holistic learning works for law and languages.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 13
+  },
+  {
+    "question": "What challenge does the author acknowledge about spacing effects in learning?",
+    "answer": "The author acknowledges that while spacing is effective for long-term recall, it creates a challenge because focus is also essential for getting work done. Managing multiple learning projects simultaneously is harder than dedicating oneself to only one or two, creating a trade-off between spacing benefits and focus benefits.",
+    "model": "claude-3-7-sonnet-20250219",
+    "doc_id": 13
+  }
+]

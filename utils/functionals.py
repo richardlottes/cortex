@@ -114,7 +114,7 @@ class FAISSFunctional:
         self.filename = filename
 
 
-    def add_embs(self, embeddings: np.ndarray, return_ids: bool=False, autosave: bool=False) -> Optional[Tuple[List[str], List[int]]]:
+    def add_embs(self, embeddings: np.ndarray, return_ids: bool=False, autosave: bool=False, custom: Optional[List[str]]=None) -> Optional[Tuple[List[str], List[int]]]:
         """
         Adds embeddings to the FAISS index.
 
@@ -133,8 +133,12 @@ class FAISSFunctional:
             embeddings = embeddings.reshape(1,-1)
 
         faiss.normalize_L2(embeddings) #Normalize embedding for cosine similarity lookups
-        uuid_strs = [str(uuid.uuid4()) for _ in range(len(embeddings))] #Build UUIDs
-        faiss_ids = [int(uuid.UUID(uuid_str).int & ((1 << 63) -1)) for uuid_str in uuid_strs] #Convert UUIDs into FAISS compatible 63-bit integers ID with extremely low collision probability
+        if custom:
+            faiss_ids = custom
+        else:
+            uuid_strs = [str(uuid.uuid4()) for _ in range(len(embeddings))] #Build UUIDs
+            faiss_ids = [int(uuid.UUID(uuid_str).int & ((1 << 63) -1)) for uuid_str in uuid_strs] #Convert UUIDs into FAISS compatible 63-bit integers ID with extremely low collision probability
+             
         self.index.add_with_ids(embeddings, faiss_ids)
 
         if autosave:
@@ -260,7 +264,7 @@ class SQLiteFunctional:
     """
     Lightweight wrapper around SQLite3 to increase ease of use.
     """
-    
+
     def __init__(self, filename: str, schemas: Optional[List[str]]=None):
         self.filename = filename
         self.schemas = schemas
