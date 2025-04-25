@@ -9,12 +9,11 @@ import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from utils.functionals import FAISSFunctional
-from utils.processing import chunk_text
+from core.functionals import FAISSFunctional
+from core.processing import chunk_text
 
-from configs.constants import CORPUS_PATH, QA_RELEVANCE_PATH
-from configs.llm import load_splitter, ANCHORS
-from configs.embed import load_embed_model
+from configs.constants import CORPUS_PATH, QA_RELEVANCE_PATH, ANCHORS
+from configs.llm import load_splitter, load_embed_model
 
 
 

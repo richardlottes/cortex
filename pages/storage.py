@@ -2,8 +2,8 @@ import uuid
 import os
 import streamlit as st
 
-from utils.streamlit import get_db, get_index, display_pdf, st_success_reset, st_failure_reset
-from utils.processing import (
+from core.streamlit import get_db, get_index, display_pdf, st_success_reset, st_failure_reset
+from core.processing import (
     delete_document,
     reset_storage,
     DocumentManager
