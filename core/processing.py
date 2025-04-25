@@ -14,15 +14,20 @@ from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core import SimpleDirectoryReader
 from llama_index.core.schema import Document
 
-from utils.functionals import FAISSFunctional, SQLiteFunctional
+from core.functionals import FAISSFunctional, SQLiteFunctional
+
 from configs.llm import get_openai_client, get_mistral_client, get_anthropic_client, load_splitter
-from configs.enums import LLM
+from configs.constants import LLM
 
 
+###########################
+###Initialize LLM###
+###########################
 openai_client = get_openai_client()
 anthropic_client = get_anthropic_client()
 mistral_client = get_mistral_client()
 splitter = load_splitter()
+
 
 ###########################
 ###PDF (OCR)###

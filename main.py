@@ -6,11 +6,13 @@ import streamlit as st
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from utils.streamlit_helpers import get_index, get_db, view_context, view_message_history
-from utils.processing import openai_message_template, llm_stream
+from core.streamlit import get_index, get_db, view_context, view_message_history
+from core.processing import openai_message_template, llm_stream
+
 from configs.schemas import schemas
-from configs.llm import dim, MODELS, SYS_TEMPLATE
-from configs.embed import load_embed_model
+from configs.constants import MODELS, dim
+from configs.prompts import SYS_TEMPLATE
+from configs.llm import load_embed_model
 
 
 #Explicitly set to avoid forked process warning

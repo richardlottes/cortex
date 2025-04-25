@@ -2,15 +2,16 @@ import uuid
 import os
 import streamlit as st
 
+from utils.streamlit import get_db, get_index, display_pdf, st_success_reset, st_failure_reset
 from utils.processing import (
     delete_document,
     reset_storage,
     DocumentManager
 )
-from utils.streamlit_helpers import get_db, get_index, display_pdf, st_success_reset, st_failure_reset
+
 from configs.schemas import schemas
-from configs.llm import dim
-from configs.embed import load_embed_model
+from configs.constants import dim
+from configs.llm import load_embed_model
 
 
 if "embed_model" not in st.session_state:

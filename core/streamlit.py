@@ -5,8 +5,10 @@ from time import sleep
 
 from textwrap import shorten
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
-from utils.functionals import FAISSFunctional, SQLiteFunctional
+from core.functionals import FAISSFunctional, SQLiteFunctional
 
 
 def get_index(filename: str, dim: int=384) -> FAISSFunctional:
@@ -147,3 +149,16 @@ def view_message_history(messages: List[Dict], show_chunks: bool):
                     st.markdown(message["content"][0]["text"])
                 elif message["role"] == "user":
                     st.markdown(message["content"][0]["text"])
+
+
+def interactive_line_chart(df: pd.DataFrame, x: str, y: str, color: str, title: str, legend_title: str):
+    """
+    
+    """
+
+    fig = px.line(df, x=x, y=y, color=color)
+    fig.update_layout(
+        title=title,
+        legend_title_text=legend_title
+    )
+    st.plotly_chart(fig)
