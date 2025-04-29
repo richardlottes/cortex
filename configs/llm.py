@@ -12,9 +12,10 @@ from anthropic import Anthropic
 if os.getenv("GOOGLE_CLOUD_PROJECT") is None:
     load_dotenv()
 
-#Lazy load embedding model
+#Lazy load embedding model - offline implementation
 def load_embed_model():
-    return SentenceTransformer("all-MiniLM-L6-v2")
+    # return SentenceTransformer("all-MiniLM-L6-v2")
+    return SentenceTransformer(".cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2")
 
 #Lazy load chunker
 def load_splitter(chunk_size=512):
