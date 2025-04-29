@@ -3,7 +3,7 @@ Cortex is a lightweight Retrieval-Augmented Generation (RAG) app built with Pyth
 
 ---
 
-[![Watch the demo](https://youtu.be/HciglJgE7XQ)
+[![Watch the demo](https://img.youtube.com/vi/HciglJgE7XQ/maxresdefault.jpg)](https://youtu.be/HciglJgE7XQ)
 
 ---
 
