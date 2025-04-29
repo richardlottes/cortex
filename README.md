@@ -3,6 +3,10 @@ Cortex is a lightweight Retrieval-Augmented Generation (RAG) app built with Pyth
 
 ---
 
+[![Watch the demo](https://youtu.be/HciglJgE7XQ)
+
+---
+
 ## Features
 ### Multi-format Document Ingestion
 - Upload files (PDF and TXT)
