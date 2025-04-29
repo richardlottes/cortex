@@ -15,7 +15,7 @@ if os.getenv("GOOGLE_CLOUD_PROJECT") is None:
 #Lazy load embedding model - offline implementation
 def load_embed_model():
     # return SentenceTransformer("all-MiniLM-L6-v2")
-    return SentenceTransformer(".cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2")
+    return SentenceTransformer(".cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/fa97f6e7cb1a59073dff9e6b13e2715cf7475ac9")
 
 #Lazy load chunker
 def load_splitter(chunk_size=512):
