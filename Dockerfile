@@ -4,6 +4,11 @@ FROM python:3.10-slim
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+# Set offline Hugging Face caching locations
+ENV TRANSFORMERS_OFFLINE=1
+ENV TRANSFORMERS_CACHE=/app/.cache/huggingface
+ENV SENTENCE_TRANSFORMERS_HOME=/app/.cache/sentence_transformers
+
 # Set work directory
 WORKDIR /app
 
@@ -24,6 +29,9 @@ RUN pip install --upgrade pip setuptools wheel
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy cached model files (assumes you ran & cached locally beforehand)
+COPY .cache /app/.cache
 
 # Copy project
 COPY . .
